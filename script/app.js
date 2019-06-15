@@ -16,15 +16,15 @@ function cadastro(){
     };
 
     const body = {firstName: $name.value, lastName: $lname.value, email: $email.value, password: $senha.value};
-
     let options = {method: 'POST', body: JSON.stringify(body)};
+    console.log(options)
     options = Object.assign({}, defaults, options);
 
     // return new Promise((resolve, reject) => {
     console.log("cadastrando...");
     // mudar a URL quando o servidor tiver aceitando a requisição
-    fetch("localhost:8080/api/users/", options).then(resp => {  // ta dando problema do cors
-        console.log(rest);
+    fetch("https://projsof.herokuapp.com/api/users/", options).then(resp => {  // ta dando problema do cors
+        console.log(resp);
     }).catch(error =>{
         console.log(error);
     });
@@ -32,6 +32,8 @@ function cadastro(){
     console.log("cadastrado");
     
     // };
+    
+
 }
 
 
