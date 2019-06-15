@@ -5,6 +5,7 @@ const $email = document.querySelector('#email');
 const $senha = document.querySelector('#senha');
 const $btnCadastro = document.querySelector('#btnCadastro');
 
+//Funcao que envia um POST com um Json formado pelos dados de um usuário que deseja se cadastrar no sistema.
 function cadastro(){
     const headers = new Headers({
         'Access-Control-Allow-Origin': '*',
@@ -31,11 +32,5 @@ function cadastro(){
 
     console.log("cadastrado");
     
-    // };
+    }
     
-
-}
-
-
-$btnCadastro.onclick = cadastro();
-
