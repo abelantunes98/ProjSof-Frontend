@@ -7,30 +7,33 @@ const $btnCadastro = document.querySelector('#btnCadastro');
 
 //Funcao que envia um POST com um Json formado pelos dados de um usuário que deseja se cadastrar no sistema.
 function cadastro(){
-    const headers = new Headers({
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json'
-    });
+    let name = $name.value;
+    let lname = $lname.value;
+    let email = $email.value;
+    let senha = $senha.value;
 
-    const defaults = {
-        headers: headers
-    };
+    const url = "https://projsof.herokuapp.com/api/users/";
 
-    const body = {firstName: $name.value, lastName: $lname.value, email: $email.value, password: $senha.value};
-    let options = {method: 'POST', body: JSON.stringify(body)};
-    console.log(options)
-    options = Object.assign({}, defaults, options);
-
-    // return new Promise((resolve, reject) => {
-    console.log("cadastrando...");
-    // mudar a URL quando o servidor tiver aceitando a requisição
-    fetch("https://projsof.herokuapp.com/api/users/", options).then(resp => {  // ta dando problema do cors
-        console.log(resp);
-    }).catch(error =>{
-        console.log(error);
-    });
-
-    console.log("cadastrado");
+    const corpo = {firstName: name, lastName: lname, email: email, password: senha};
     
-    }
+    console.log("cadastrando...");
+
+    fetch(url, {
+        method: 'post',
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        },
+        body: JSON.stringify(corpo)
+    })
+    .then(response.json())
+    .then(function(data){
+        console.log('Request feito com sucesso, JSON response: ', data);
+    })
+    .catch(function (error){
+        console.log('Request falhou', error);
+    });
+    console.log("cadastrado");
+}
+
+$btnCadastro.onclick = cadastro();
     
