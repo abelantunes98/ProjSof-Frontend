@@ -1,0 +1,20 @@
+html{
+    margin: 0%;
+    padding: 0%;
+}
+
+body{
+    background-color: #f1f1ff;
+}
+
+#schSubject{
+    background-image: url("../images/lupa.png");
+    background-color: rgb(90, 83, 83);
+    background-position: 10px 2px;
+    background-repeat: no-repeat;
+    padding: 10px 10px;
+}
+
+#shcSubject.placeholder{
+    color: aqua;
+}

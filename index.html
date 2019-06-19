@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="./style/estilo.css">
     <title>UCDb</title>
 </head>
 <body>
@@ -18,6 +19,11 @@
             <input id="senha" type="text" placeholder="senha"><br>
             <button id="btnCadastro" onclick="cadastro()">Enviar</button>
         </fieldset>
+
+        <form action="">
+            <input id="schSubject" type="text" onkeyup="procuraDisciplina()" placeholder="Pesquisar Disciplinas:">
+            <div id="resultSearch"></div>           
+        </form>
     </main>
     <script src="./script/app.js"></script>
 </body>
