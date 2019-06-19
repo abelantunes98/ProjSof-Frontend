@@ -1,11 +1,14 @@
-$email = document.querySelector('#email');
-$senha = document.querySelector('#senha');
+const $email = document.querySelector('#email');
+const $senha = document.querySelector('#senha');
 
-function login(){   
+
+async function login(){   
     let email = $email.value;
     let senha = $senha.value;
+    let dados;
+    let token;
 
-    url = "http://localhost:8080/api/auth/login";
+    const url = "http://localhost:8080/api/auth/login";
     // url = "https://projsof.herokuapp.com/api/auth/login";
 
     const corpo = {email: email, password: senha};
@@ -28,16 +31,13 @@ function login(){
 
     console.log('fazendo login...');
 
-    fetch(url, options)
-    .then(response => {
-        console.log("Request feito com sucesso, pegue seu token: ", response);
-        alert(`Pegue seu token ${response}`);
-    })
-    .catch(error =>{
-        alert(`"Algo deu errado! ErrorStatus: " ${error}`);
-        console.log(error);
-    });
-    
-    console.log("logado com sucesso");
+    let response = await fetch(url, options);
+    if(response){
+        dados = await response.json();
+    }else{
+        console.log("deu ruim");
+        console.log(response);
+    }
 
+    token = dados.token; // usar futuramente para rotas privadas
 }

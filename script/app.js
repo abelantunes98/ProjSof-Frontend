@@ -5,13 +5,14 @@ const $email = document.querySelector('#email');
 const $senha = document.querySelector('#senha');
 
 //Funcao que envia um POST com um Json formado pelos dados de um usuário que deseja se cadastrar no sistema.
-function cadastro(){
+async function cadastro(){
     let name = $name.value;
     let lname = $lname.value;
     let email = $email.value;
     let senha = $senha.value;
 
-    const url = "https://projsof.herokuapp.com/api/users/";
+    const url = "http://localhost:8080/api/users/";
+    // const url = "https://projsof.herokuapp.com/api/users/";
 
     const corpo = {firstName: name, lastName: lname, email: email, password: senha};
     
@@ -30,15 +31,11 @@ function cadastro(){
 
     options = Object.assign({}, defaults, options);
 
-    console.log("cadastrando...");
-
-    fetch(url, options)
-    .then(resp =>{
-        console.log('Request feito com sucesso, JSON response: ', resp);
-    })
-    .catch(function (error){
-        console.log('Request falhou', error);
-    });
-    console.log("cadastrado");
+    let response = await fetch(url, options);
+    if(response){ // verifica se o response não é null
+        alert("Entre no seu email para completar o cadastro");
+    }else{  // deu erro.
+        alert("Algo deu ruim");
+    }
 }
     
