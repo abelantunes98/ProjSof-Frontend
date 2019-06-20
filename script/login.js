@@ -8,8 +8,8 @@ async function login(){
     let dados;
     let token;
 
-    // const url = "http://localhost:8080/api/auth/login";
-    url = "https://projsof.herokuapp.com/api/auth/login";
+    const url = "http://localhost:8080/api/auth/login";
+    // url = "https://projsof.herokuapp.com/api/auth/login";
 
     const corpo = {email: email, password: senha};
 
