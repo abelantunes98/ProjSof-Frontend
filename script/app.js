@@ -7,6 +7,7 @@ const $senha = document.querySelector('#senha');
 //Funcao que envia um POST com um Json formado pelos dados de um usuário que deseja se cadastrar no sistema.
 
 async function cadastro(){
+
     let name = $name.value;
     let lname = $lname.value;
     let email = $email.value;
@@ -54,11 +55,11 @@ async function authomatizeRequest(url, method, body){
 
 async function procuraDisciplina(){  
     const $schSubject = document.querySelector("#schSubject");
-    const $resultSearch = document.querySelector("#resultSearch");
     
     let subString = $schSubject.value;
-    let resultado = $resultSearch.value;
-    let dados, id, name;
+
+    let dados;
+
     if(subString != ""){
         const url = "http://localhost:8080/api/subjects/search/" + subString;
         // const url = "https://projsof.herokuapp.com/api/subjects/search/" + subString;
@@ -69,7 +70,8 @@ async function procuraDisciplina(){
     
         if(response){ //verifica se a response é null
             console.log(response);
-            dados = response.json();
+            dados = await response.json();
+            viewDisciplinas(dados);
         }else{
             alert("Ops! Alguma coisa falhou :(");
             return;
@@ -80,4 +82,43 @@ async function procuraDisciplina(){
     
 }
 
-    
+function viewDisciplinas(dados){
+    const $resultSearch = document.querySelector("#resultSearch");
+    let resultado;
+    let id, nomeDisciplina;
+
+    for(i = 0; i < dados.length; i++){
+        id = dados[i].id;
+        nomeDisciplina = dados[i].subjectName;
+        if(i>0)
+            resultado = resultado + `<p>${id} - ${nomeDisciplina}<p>`
+        else
+            resultado = `<p>${id} - ${nomeDisciplina}<p>`
+    }
+    $resultSearch.innerHTML = resultado;
+    console.log("executou o for");
+}
+
+async function login(){   
+    const $emailLogin = document.querySelector('#emailLogin');
+    const $senhaLogin = document.querySelector('#senhaLogin');
+
+    let email = $emailLogin.value;
+    let senha = $senhaLogin.value;
+    let dados;
+    let token;
+
+    const url = "http://localhost:8080/api/auth/login";
+    // url = "https://projsof.herokuapp.com/api/auth/login";
+
+    const corpo = {email: email, password: senha};
+    const method = 'POST';
+    let response = await authomatizeRequest(url, method, corpo);
+    if(response){
+        dados = await response.json(); // se não colocar o await ele retorna uma promisse
+        token = dados.token;
+        console.log(token);
+    }else{
+        alert("Ops! Alguma coisa falhou :(");
+    } 
+}
