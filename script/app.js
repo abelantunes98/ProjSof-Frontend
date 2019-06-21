@@ -13,8 +13,8 @@ async function cadastro(){
     let email = $email.value;
     let senha = $senha.value;
 
-    const url = "http://localhost:8080/api/users/";
-    // const url = "https://projsof.herokuapp.com/api/user/";
+    // const url = "http://localhost:8080/api/users/";
+    const url = "https://projsof.herokuapp.com/api/user/";
 
     const corpo = {firstName: name, lastName: lname, email: email, password: senha};
     const method = 'POST';
@@ -61,8 +61,8 @@ async function procuraDisciplina(){
     let dados;
 
     if(subString != ""){
-        const url = "http://localhost:8080/api/subjects/search/" + subString;
-        // const url = "https://projsof.herokuapp.com/api/subjects/search/" + subString;
+        // const url = "http://localhost:8080/api/subjects/search/" + subString;
+        const url = "https://projsof.herokuapp.com/api/subjects/search/" + subString;
         const corpo = null; // Null pois GET não tem body;
         const method = 'GET';
     
@@ -78,8 +78,6 @@ async function procuraDisciplina(){
         }
         console.log(dados);
     }
-    // for(i = 0; i < dados.)
-    
 }
 
 function viewDisciplinas(dados){
@@ -108,8 +106,8 @@ async function login(){
     let dados;
     let token;
 
-    const url = "http://localhost:8080/api/auth/login";
-    // url = "https://projsof.herokuapp.com/api/auth/login";
+    // const url = "http://localhost:8080/api/auth/login";
+    url = "https://projsof.herokuapp.com/api/auth/login";
 
     const corpo = {email: email, password: senha};
     const method = 'POST';
