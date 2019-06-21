@@ -122,3 +122,7 @@ async function login(){
         alert("Ops! Alguma coisa falhou :(");
     } 
 }
+
+async function procuraDisciplinaById(){
+    
+}
