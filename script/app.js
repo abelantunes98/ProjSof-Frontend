@@ -3,7 +3,7 @@
  * @author Hércules Rodrigues - herculesra - 117210908.
  */
 
-
+var token = null;
  // envia um POST com um Json formado pelos dados de um usuário que deseja se cadastrar no sistema.
 async function cadastro(){
     const $name = document.querySelector('#name');
@@ -24,22 +24,24 @@ async function cadastro(){
     const method = 'POST';
 
     let response = await authomatizeRequest(url, method, corpo);
-    if(response){ // verifica se o response não é null
+    let dados = await response.json();
+    if(response.ok){ // verifica se o response não é null
         alert("Entre no seu email para completar o cadastro");
     }else{  // deu erro.
-        alert("Algo deu ruim");
+        alert("Por favor insira dados corretos");
+        alert("Error: " + dados.message);
     }
 }
 
 
 async function login(){   
+    
     const $emailLogin = document.querySelector('#emailLogin');
     const $senhaLogin = document.querySelector('#senhaLogin');
     
     let email = $emailLogin.value;
     let senha = $senhaLogin.value;
     let dados;
-    let token;
     
     // Rotas para testar a API
     const url = "http://localhost:8080/api/auth/login";
@@ -48,12 +50,13 @@ async function login(){
     const corpo = {email: email, password: senha};
     const method = 'POST';
     let response = await authomatizeRequest(url, method, corpo);
-    if(response){
-        dados = await response.json(); // se não colocar o await ele retorna uma promisse
-        token = dados.token;
+    dados = await response.json(); // se não colocar o await ele retorna uma promisse
+    
+    if(response.ok){
+        this.token = dados.token;
         console.log(token);
     }else{
-        alert("Ops! Alguma coisa falhou :(");
+        alert(dados.message);
     } 
 }
 
@@ -74,7 +77,7 @@ async function procuraDisciplina(){
 
         let response = await authomatizeRequest(url, method, corpo);
         
-        if(response){ //verifica se a response é null
+        if(response.ok){ 
             console.log(response);
             dados = await response.json();
             viewDisciplinas(dados);
@@ -90,7 +93,11 @@ function viewDisciplinas(dados){
     const $resultSearch = document.querySelector("#resultSearch");
     let resultado;
     let id, nomeDisciplina;
-    
+
+    if(dados.length == 0){
+        resultado = "Infelizmente não temos esta disciplina no nosso banco de dados."
+    }
+
     for(i = 0; i < dados.length; i++){
         id = dados[i].id;
         nomeDisciplina = dados[i].subjectName;
@@ -100,25 +107,36 @@ function viewDisciplinas(dados){
         resultado = `<p>${id} - ${nomeDisciplina}<p>`
     }
     $resultSearch.innerHTML = resultado;
-    console.log("executou o for");
 }
 
 async function procuraDisciplinaById(){
     $schSubjectById = document.querySelector("#schSubjectById");
     let subjectId = $schSubjectById.value;
-    
+    let dados
+
     const url = "http://localhost:8080/api/subjects/searchId/" + subjectId;
     // const url = "https://projsof.herokuapp.com/api/subjects/searchId/" + subjectId;
+    const method = 'GET';
+    const body = null;
 
-    
-
+    if(subjectId != ""){
+        let response = await authomatizeRequest(url, method, body);
+        dados = await response.json();       
+        
+        if(response.ok){
+            viewDisciplinas(dados);
+        }else{
+            alert("ID inválido da disciplina");
+        }
+    }
 }
 
 async function authomatizeRequest(url, method, body){
     let options;
     const headers = new Headers({
         'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json; charset=utf-8'
+        'Content-Type': 'application/json; charset=utf-8',
+        'Authorization':'Bearer ' + this.token
     });
         
     const defaults = {
