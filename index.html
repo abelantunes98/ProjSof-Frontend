@@ -13,36 +13,31 @@
     </header>
     <main>
         <h2>Cadastro e Login de Usuários</h2>
+
         <fieldset>
             <legend>Cadastro de Usuários:</legend>
             <input id="name" type="text" placeholder="nome"><br>
             <input id="lname" type="text" placeholder="ultimo nome"><br>
-            <input id="email" type="text" placeholder="e-mail"><br>
-            <input id="senha" type="text" placeholder="senha"><br>
+            <input id="email" type="email" placeholder="e-mail"><br>
+            <input id="senha" type="password" placeholder="senha"><br>
             <button onclick="cadastro()">Enviar</button>
         </fieldset>
 
         <fieldset>
             <legend>Login</legend>
-            <label>E-mail:
-                <input id="emailLogin" type="text">
-            </label><br>
-
-            <label>Senha:
-                <input id="senhaLogin" type="text">
-            </label><br>
-
+            <input id="emailLogin" type="email" placeholder="E-mail"><br>
+            <input id="senhaLogin" type="password" placeholder="senha"><br>
             <button onclick="login()">Enviar</button>
-            
         </fieldset> 
+
         <header><h2>Procurar Disciplinas:</h2></header>
-        <form action="">
-            <input id="schSubject" type="text" onkeyup="procuraDisciplina()" placeholder="Pesquisar Disciplinas:">
+        <form>
+            <input id="schSubject" type="text" onkeyup="procuraDisciplina()" placeholder="Pesquisar Disciplinas:" autocomplete="of">
             <div id="resultSearch"></div>           
         </form>
 
         <form> 
-            <input id="schSubjectById" type="text" onkeyup="procuraDisciplinaById()" placeholder="ID Disciplina">
+            <input id="schSubjectById" type="number" onkeyup="procuraDisciplinaById()" placeholder="ID Disciplina">
             <div id="resultSearchById"></div>
         </form>
     </main>

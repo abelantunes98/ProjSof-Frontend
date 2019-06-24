@@ -23,13 +23,13 @@ async function cadastro(){
     const corpo = {firstName: name, lastName: lname, email: email, password: senha};
     const method = 'POST';
 
-    let response = await authomatizeRequest(url, method, corpo);
-    let dados = await response.json();
-    if(response.ok){ // verifica se o response não é null
+    const response = await authomatizeRequest(url, method, corpo);
+
+    if(response.ok){ 
         alert("Entre no seu email para completar o cadastro");
     }else{  // deu erro.
         alert("Por favor insira dados corretos");
-        alert("Error: " + dados.message);
+        alert("Error: " + response.status);
     }
 }
 
@@ -110,11 +110,12 @@ function viewDisciplinas(dados){
 }
 
 async function procuraDisciplinaById(){
+    debugger;
     $schSubjectById = document.querySelector("#schSubjectById");
     let subjectId = $schSubjectById.value;
     let dados
 
-    const url = "http://localhost:8080/api/subjects/searchId/" + subjectId;
+    const url = "http://localhost:8080/api/subjects/searchId/" + subjectId; 
     // const url = "https://projsof.herokuapp.com/api/subjects/searchId/" + subjectId;
     const method = 'GET';
     const body = null;
