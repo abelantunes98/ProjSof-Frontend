@@ -18,7 +18,7 @@ async function cadastro(){
 
     // Rotas para testar a API
     const url = "http://localhost:8080/api/users/";
-    // const url = "https://projsof.herokuapp.com/api/user/";
+    // const url = "https://projsof.herokuapp.com/api/users/";
 
     const corpo = {firstName: name, lastName: lname, email: email, password: senha};
     const method = 'POST';
