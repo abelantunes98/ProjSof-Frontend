@@ -80,12 +80,12 @@ async function procuraDisciplina(){
         if(response.ok){ 
             console.log(response);
             dados = await response.json();
+            console.log(dados);
             viewDisciplinas(dados);
         }else{
             alert("Ops! Alguma coisa falhou :(");
             return;
         }
-        console.log(dados);
     }
 }
 
@@ -94,24 +94,33 @@ function viewDisciplinas(dados){
     let resultado;
     let id, nomeDisciplina;
 
-    if(dados.length == 0){
+    if(Array.isArray(dados) && dados.length == 0){
         resultado = "Infelizmente não temos esta disciplina no nosso banco de dados."
     }
-
-    for(i = 0; i < dados.length; i++){
-        id = dados[i].id;
-        nomeDisciplina = dados[i].subjectName;
-        if(i>0)
-        resultado = resultado + `<p>${id} - ${nomeDisciplina}<p>`
-        else
+    
+    else if (Array.isArray(dados)) {
+        for(i = 0; i < dados.length; i++){
+            id = dados[i].id;
+            nomeDisciplina = dados[i].subjectName;
+            if(i>0)
+            resultado = resultado + `<p>${id} - ${nomeDisciplina}<p>`
+            else
+            resultado = `<p>${id} - ${nomeDisciplina}<p>`
+        }
+    }
+    
+    else {
+        id = dados.id;
+        nomeDisciplina = dados.subjectName;
         resultado = `<p>${id} - ${nomeDisciplina}<p>`
     }
+    
     $resultSearch.innerHTML = resultado;
 }
 
 async function procuraDisciplinaById(){
-    debugger;
-    $schSubjectById = document.querySelector("#schSubjectById");
+    
+    const $schSubjectById = document.querySelector("#schSubjectById");
     let subjectId = $schSubjectById.value;
     let dados
 
@@ -121,10 +130,10 @@ async function procuraDisciplinaById(){
     const body = null;
 
     if(subjectId != ""){
-        let response = await authomatizeRequest(url, method, body);
-        dados = await response.json();       
-        
+        let response = await authomatizeRequest(url, method, body);       
         if(response.ok){
+            dados = await response.json();
+            console.log(dados);
             viewDisciplinas(dados);
         }else{
             alert("ID inválido da disciplina");
@@ -135,14 +144,15 @@ async function procuraDisciplinaById(){
 async function authomatizeRequest(url, method, body){
     let options;
     const headers = new Headers({
-        'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json; charset=utf-8',
-        'Authorization':'Bearer ' + this.token
+        'cache-control': 'no-cache',
+        'Authorization': `Bearer ${token}`
     });
         
     const defaults = {
         headers: headers
     };
+    
     if(body == null){
         options = {
         method: method  
@@ -155,6 +165,5 @@ async function authomatizeRequest(url, method, body){
     }
 
     options = Object.assign({}, defaults, options);
-
     return  await fetch(url, options);
 }
