@@ -17,7 +17,7 @@ async function cadastro(){
     let senha = $senha.value;
 
     // Rotas para testar a API
-    // const url = "http://localhost:8080/api/users/";
+    //const url = "http://localhost:8080/api/users/";
     const url = "https://projsof.herokuapp.com/api/users/";
 
     const corpo = {firstName: name, lastName: lname, email: email, password: senha};
@@ -120,23 +120,25 @@ function viewDisciplinas(dados){
 
 async function procuraDisciplinaById(){
     
-    const $schSubjectById = document.querySelector("#schSubjectById");
-    let subjectId = $schSubjectById.value;
-    let dados
+    if (this.token != null) {
+        const $schSubjectById = document.querySelector("#schSubjectById");
+        let subjectId = $schSubjectById.value;
+        let dados
 
-    //const url = "http://localhost:8080/api/subjects/searchId/" + subjectId; 
-    const url = "https://projsof.herokuapp.com/api/subjects/searchId/" + subjectId;
-    const method = 'GET';
-    const body = null;
+        //const url = "http://localhost:8080/api/subjects/searchId/" + subjectId; 
+        const url = "https://projsof.herokuapp.com/api/subjects/searchId/" + subjectId;
+        const method = 'GET';
+        const body = null;
 
-    if(subjectId != 0){
-        let response = await authomatizeRequest(url, method, body);       
-        if(response.ok){
-            dados = await response.json();
-            console.log(dados);
-            viewDisciplinas(dados);
-        }else{
-            alert("ID inválido da disciplina");
+        if(subjectId != 0){
+            let response = await authomatizeRequest(url, method, body);       
+            if(response.ok){
+                dados = await response.json();
+                console.log(dados);
+                viewDisciplinas(dados);
+            }else{
+                alert("ID inválido da disciplina");
+            }
         }
     }
 }
@@ -145,7 +147,6 @@ async function authomatizeRequest(url, method, body){
     let options;
     const headers = new Headers({
         'Content-Type': 'application/json; charset=utf-8',
-        'cache-control': 'no-cache',
         'Authorization': `Bearer ${token}`
     });
         
