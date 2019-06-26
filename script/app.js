@@ -129,7 +129,7 @@ async function procuraDisciplinaById(){
     const method = 'GET';
     const body = null;
 
-    if(subjectId != ""){
+    if(subjectId != 0){
         let response = await authomatizeRequest(url, method, body);       
         if(response.ok){
             dados = await response.json();
