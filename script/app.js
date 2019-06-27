@@ -3,7 +3,6 @@
  * @author Hércules Rodrigues - herculesra - 117210908.
  */
 
-var token = null;
  // envia um POST com um Json formado pelos dados de um usuário que deseja se cadastrar no sistema.
 async function cadastro(){
     const $name = document.querySelector('#name');
@@ -17,8 +16,8 @@ async function cadastro(){
     let senha = $senha.value;
 
     // Rotas para testar a API
-    const url = "http://localhost:8080/api/users/";
-    // const url = "https://projsof.herokuapp.com/api/users/";
+    // const url = "http://localhost:8080/api/users/";
+    const url = "https://projsof.herokuapp.com/api/users/";
 
     const corpo = {firstName: name, lastName: lname, email: email, password: senha};
     const method = 'POST';
@@ -43,8 +42,8 @@ async function login(){
     let dados;
     
     // Rotas para testar a API
-    const url = "http://localhost:8080/api/auth/login";
-    // const url = "https://projsof.herokuapp.com/api/auth/login";
+    // const url = "http://localhost:8080/api/auth/login";
+    const url = "https://projsof.herokuapp.com/api/auth/login";
     
     const corpo = {email: email, password: senha};
     const method = 'POST';
@@ -52,9 +51,9 @@ async function login(){
     dados = await response.json(); // se não colocar o await ele retorna uma promisse
     
     if(response.ok){
-        this.token = dados.token;
+        sessionStorage.setItem("token", dados.token); // guardando o token no sessionStorage, perde a informação quando o browser é fechado.
         alert("Bem vindo!\nLogin efetuado com sucesso!");
-        console.log(token);
+        console.log(dados.token);
     }else{
         alert(dados.message);
     } 
@@ -66,8 +65,8 @@ async function procuraDisciplina(){
     let dados;
 
     // Rotas para testar a API
-    const url = "http://localhost:8080/api/subjects/search/" + subString;
-    // const url = "https://projsof.herokuapp.com/api/subjects/search/" + subString;
+    // const url = "http://localhost:8080/api/subjects/search/" + subString;
+    const url = "https://projsof.herokuapp.com/api/subjects/search/" + subString;
 
     const corpo = null; // Null pois GET não tem body;
     const method = 'GET';
@@ -121,14 +120,14 @@ function viewDisciplinas(dados){
 }
 
 async function procuraDisciplinaById(){
-    
-    if (this.token != null) {
+    const token = sessionStorage.getItem("token");
+    if (token != null) {
         const $schSubjectById = document.querySelector("#schSubjectById");
         let subjectId = $schSubjectById.value;
         let dados
 
-        const url = "http://localhost:8080/api/subjects/searchId/" + subjectId; 
-        // const url = "https://projsof.herokuapp.com/api/subjects/searchId/" + subjectId;
+        // const url = "http://localhost:8080/api/subjects/searchId/" + subjectId; 
+        const url = "https://projsof.herokuapp.com/api/subjects/searchId/" + subjectId;
         const method = 'GET';
         const body = null;
 
@@ -141,11 +140,15 @@ async function procuraDisciplinaById(){
             }else{
                 alert("ID inválido da disciplina");
             }
+        }else{
+            dados = null;
+            viewDisciplinas(dados);
         }
     }
 }
 
 async function authomatizeRequest(url, method, body){
+    const token = sessionStorage.getItem("token");
     let options;
     const headers = new Headers({
         'Content-Type': 'application/json; charset=utf-8',
