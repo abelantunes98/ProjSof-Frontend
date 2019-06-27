@@ -17,8 +17,8 @@ async function cadastro(){
     let senha = $senha.value;
 
     // Rotas para testar a API
-    //const url = "http://localhost:8080/api/users/";
-    const url = "https://projsof.herokuapp.com/api/users/";
+    const url = "http://localhost:8080/api/users/";
+    // const url = "https://projsof.herokuapp.com/api/users/";
 
     const corpo = {firstName: name, lastName: lname, email: email, password: senha};
     const method = 'POST';
@@ -28,8 +28,7 @@ async function cadastro(){
     if(response.ok){ 
         alert("Entre no seu email para completar o cadastro");
     }else{  // deu erro.
-        alert("Por favor insira dados corretos");
-        alert("Error: " + response.status);
+        alert("Por favor insira dados corretos\nError: " + response.status);
     }
 }
 
@@ -44,8 +43,8 @@ async function login(){
     let dados;
     
     // Rotas para testar a API
-    //const url = "http://localhost:8080/api/auth/login";
-    const url = "https://projsof.herokuapp.com/api/auth/login";
+    const url = "http://localhost:8080/api/auth/login";
+    // const url = "https://projsof.herokuapp.com/api/auth/login";
     
     const corpo = {email: email, password: senha};
     const method = 'POST';
@@ -54,6 +53,7 @@ async function login(){
     
     if(response.ok){
         this.token = dados.token;
+        alert("Bem vindo!\nLogin efetuado com sucesso!");
         console.log(token);
     }else{
         alert(dados.message);
@@ -62,25 +62,24 @@ async function login(){
 
 async function procuraDisciplina(){  
     const $schSubject = document.querySelector("#schSubject");
-    
     let subString = $schSubject.value;
     let dados;
 
     // Rotas para testar a API
-    //const url = "http://localhost:8080/api/subjects/search/" + subString;
-    const url = "https://projsof.herokuapp.com/api/subjects/search/" + subString;
+    const url = "http://localhost:8080/api/subjects/search/" + subString;
+    // const url = "https://projsof.herokuapp.com/api/subjects/search/" + subString;
 
     const corpo = null; // Null pois GET não tem body;
     const method = 'GET';
     
-    if(subString != ""){ // para não pegar o undefined.
-
+    if(subString == ""){
+        dados = null;
+        viewDisciplinas(dados);
+    }else{
         let response = await authomatizeRequest(url, method, corpo);
         
         if(response.ok){ 
-            console.log(response);
             dados = await response.json();
-            console.log(dados);
             viewDisciplinas(dados);
         }else{
             alert("Ops! Alguma coisa falhou :(");
@@ -98,7 +97,7 @@ function viewDisciplinas(dados){
         resultado = "Infelizmente não temos esta disciplina no nosso banco de dados."
     }
     
-    else if (Array.isArray(dados)) {
+    else if (Array.isArray(dados)) {    //busca por caracteres
         for(i = 0; i < dados.length; i++){
             id = dados[i].id;
             nomeDisciplina = dados[i].subjectName;
@@ -108,11 +107,14 @@ function viewDisciplinas(dados){
             resultado = `<p>${id} - ${nomeDisciplina}<p>`
         }
     }
-    
-    else {
+    else if (dados != null){    //busca pelo ID
         id = dados.id;
         nomeDisciplina = dados.subjectName;
         resultado = `<p>${id} - ${nomeDisciplina}<p>`
+    }
+    
+    else{ //quando dados é null
+        resultado = "";
     }
     
     $resultSearch.innerHTML = resultado;
@@ -125,8 +127,8 @@ async function procuraDisciplinaById(){
         let subjectId = $schSubjectById.value;
         let dados
 
-        //const url = "http://localhost:8080/api/subjects/searchId/" + subjectId; 
-        const url = "https://projsof.herokuapp.com/api/subjects/searchId/" + subjectId;
+        const url = "http://localhost:8080/api/subjects/searchId/" + subjectId; 
+        // const url = "https://projsof.herokuapp.com/api/subjects/searchId/" + subjectId;
         const method = 'GET';
         const body = null;
 

@@ -34,19 +34,13 @@
             </ul>
         </nav>
     </header>
-    <main>
-        <section>
-            <header><h2>Procurar Disciplinas:</h2></header>
-            <form>
-                <input id="schSubject" type="text" onkeyup="procuraDisciplina()" placeholder="Pesquisar Disciplinas:" autocomplete="of">
-                <div id="resultSearch"></div>           
-            </form>
-    
-            <form> 
-                <input id="schSubjectById" type="number" onkeyup="procuraDisciplinaById()" placeholder="ID Disciplina">
-                <div id="resultSearchById"></div>
-            </form>
-        </section>
+    <main>     
+        <h2>Disciplinas</h2>
+        <article class="procurar">
+            <input id="schSubject" type="text" onkeyup="procuraDisciplina()" placeholder="Pesquisar pelo Nome" autocomplete="of"> 
+            <input id="schSubjectById" type="number" onkeyup="procuraDisciplinaById()" placeholder="Id">  
+            <div id="resultSearch"></div>           
+        </article>    
     </main>
     <script src="./script/app.js"></script>
 </body>
