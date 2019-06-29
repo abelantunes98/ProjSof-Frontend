@@ -2,7 +2,19 @@
     box-sizing: border-box;
 }
 
-body, ul, li , p{
+html, body{
+    margin: 0;
+    padding: 0;
+    background-color: chartreuse;
+}
+
+body {
+    margin: 20px;
+    background: white;
+    padding: 20px;
+}
+
+ul, li , p{
     margin: 0px;
     padding: 0px;
     list-style: none;
@@ -11,13 +23,15 @@ body, ul, li , p{
 
 }
 
+/*                                            HEADER                                                       */
+
 input[type="checkbox"]{
     display: none;
 }
 
 a, .checkBox {
     text-decoration: none;
-    color: white;
+    color: rgb(15, 15, 15);
 }
 
 input[type="checkbox"]:checked ~ .login , input[type="checkbox"]:checked ~ .cadastro{
@@ -25,7 +39,7 @@ input[type="checkbox"]:checked ~ .login , input[type="checkbox"]:checked ~ .cada
 }
 
 .menu>li:hover{
-    background: rgb(83, 34, 34);
+    background: rgb(143, 221, 120);
     border-radius: 100px;
 }
 
@@ -35,7 +49,7 @@ input[type="checkbox"]:checked ~ .login , input[type="checkbox"]:checked ~ .cada
     position: absolute;
     visibility: hidden;
     top: 90px;
-    background-color: rgb(184,128,128);
+    background-color: rgb(184, 223, 162);
     border: 2px solid;
     padding: 25px;
     padding-bottom: 5px;
@@ -50,13 +64,13 @@ input[type="checkbox"]:checked ~ .login , input[type="checkbox"]:checked ~ .cada
 }
 
 .menu li ul li button{
-    background-color: black;
+    background-color: rgb(74, 158, 19);
     padding: 5px;
     margin-top: 10px;
     border-radius:10px;
-    border-color: black;  
+    border-color: rgb(36, 63, 11);  
     float: right;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 .header{
@@ -65,7 +79,7 @@ input[type="checkbox"]:checked ~ .login , input[type="checkbox"]:checked ~ .cada
     padding: 20px;
     align-items: center;
     flex-wrap: wrap;
-    background-color: rgba(184, 128, 128);
+    background-color: rgb(73, 177, 41);
     border-bottom: 2px solid black;
 }
 
@@ -82,18 +96,77 @@ input[type="checkbox"]:checked ~ .login , input[type="checkbox"]:checked ~ .cada
     padding: 10px;
 }
 
+/*                  MAIN                         */
 
-#schSubject{
-    /* background-image: url("../images/lupa.png"); */
-    color: blueviolet;
-    background-position: 10px 2px;
-    background-repeat: no-repeat;
-    padding: 10px;
+
+main {
+    display: grid;
+    grid-template-areas: 
+    "h2  h2      h2     h2     h2"
+    "div result result result oter";
+    /* "outro outro result result result"; */
+    grid-gap: 20px;
 }
 
-/* body > header {
-    height: 70px;
-    top: 0px;
-    width: 100%;
-    position: fixed;
-} */
+main h2{
+    grid-area: h2;
+    text-align: center;
+}
+
+.procurar {
+    grid-area: div;
+    border: 3px solid black;
+    background-color: cornflowerblue;
+    padding:30px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    max-height: 300px;
+    
+}
+
+
+
+#resultSearch{
+    border: 3px solid black;
+    padding: 20px;
+    margin-right: 10vh;
+    background-color: rgb(74, 202, 74);
+    color: black;
+    font-style:bolder;
+    font-size: 17px;
+    grid-area: result;
+    max-height: 600px;
+    overflow-y: scroll;
+    scrollbar-color: cornflowerblue;
+    margin-left: 40px;
+}
+
+#schSubject {
+    
+}
+
+#schSubjectById{
+   
+}
+
+#schSubject, #schSubjectById, .procurar p{
+    padding: 1vh;
+    width: 20vh;
+    /* margin: 0 auto; */
+    border-radius: 8px;
+    border: 2px solid black;
+}
+
+.procurar ::placeholder {
+    text-align: center;
+}
+
+.rank :nth-child(7){    /*elemento span deslikes*/
+    margin-right: 27px;
+ }
+
+.procurar p {
+    background-color: white;
+    font-size: 17px;
+}

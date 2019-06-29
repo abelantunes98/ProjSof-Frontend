@@ -1,9 +1,20 @@
 * {
     box-sizing: border-box;
-    
 }
 
-body, ul, li , p{
+html, body{
+    margin: 0;
+    padding: 0;
+    background-color: chartreuse;
+}
+
+body {
+    margin: 20px;
+    background: white;
+    padding: 20px;
+}
+
+ul, li , p{
     margin: 0px;
     padding: 0px;
     list-style: none;
@@ -12,10 +23,7 @@ body, ul, li , p{
 
 }
 
-body{
-    background-color: rgba(157, 193, 238, 0.883);
-    
-}
+/*                                            HEADER                                                       */
 
 input[type="checkbox"]{
     display: none;
@@ -88,69 +96,77 @@ input[type="checkbox"]:checked ~ .login , input[type="checkbox"]:checked ~ .cada
     padding: 10px;
 }
 
-main h2{
-    text-align: left;
-    font-family: 'Times New Roman', Times, serif;
-    font-style: italic;
-    margin-left: 20px;
-    
-}
+/*                  MAIN                         */
 
-article { 
+
+main {
     display: grid;
-    grid-template-columns: 20% 60%;
     grid-template-areas: 
-    "input" "div"
-    "input";
-
+    "h2  h2      h2     h2     h2"
+    "div result result result oter";
+    /* "outro outro result result result"; */
     grid-gap: 20px;
-    margin: 0 auto;
 }
 
-article > div{
-    display: block;
+main h2{
+    grid-area: h2;
+    text-align: center;
 }
-#resultSearch {
-    /* grid-column: 2; */
-    max-width: 800px;
-    max-height: auto;
-    color: white;
-    text-align: justify;
-    padding-top: 20px;
+
+.procurar {
+    grid-area: div;
+    border: 3px solid black;
+    background-color: cornflowerblue;
+    padding:30px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    max-height: 300px;
     
 }
-#schSubjectById{
-    grid-row: 2/2;
-}
-::placeholder{
-    color: rgb(32, 23, 21);
-    font-size: 14px;
-    margin-left: 10px;
-    text-align: left;
-}
 
-#schSubject{
-    grid-row: 1/2;
-}
 
-#schSubject, #schSubjectById{
-    grid-column: 1;
-    max-width: 20vh;
-    max-height: 3vh;  
+
+#resultSearch{
+    border: 3px solid black;
     padding: 20px;
-    margin-left: 10px;
-    text-align: left;
-}
-#schSubject, #schSubjectById, #resultSearch{
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border: 3px solid rgb(32, 23, 21);
-    background-color:rgb(48, 141, 194);
+    margin-right: 10vh;
+    background-color: rgb(74, 202, 74);
+    color: black;
+    font-style:bolder;
+    font-size: 17px;
+    grid-area: result;
+    max-height: 600px;
+    overflow-y: scroll;
+    scrollbar-color: cornflowerblue;
+    margin-left: 40px;
 }
 
+#schSubject {
+    
+}
 
-body > header {
-    height: 10vh;
-    top: 0px;
-    width: 100%;
+#schSubjectById{
+   
+}
+
+#schSubject, #schSubjectById, .procurar p{
+    padding: 1vh;
+    width: 20vh;
+    /* margin: 0 auto; */
+    border-radius: 8px;
+    border: 2px solid black;
+}
+
+.procurar ::placeholder {
+    text-align: center;
+}
+
+.rank :nth-child(7){    /*elemento span deslikes*/
+    margin-right: 27px;
+ }
+
+.procurar p {
+    background-color: white;
+    font-size: 17px;
 }

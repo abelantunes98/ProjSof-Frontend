@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="./style/estilo.css">
+    <link rel="stylesheet" href="./style/index.css">
     <title>UCDb</title>
 </head>
 <body>
@@ -36,11 +36,20 @@
     </header>
     <main>     
         <h2>Disciplinas</h2>
-        <article class="procurar">
+        <section class="procurar">
             <input id="schSubject" type="text" onkeyup="procuraDisciplina()" placeholder="Pesquisar pelo Nome" autocomplete="of"> 
             <input id="schSubjectById" type="number" onkeyup="procuraDisciplinaById()" placeholder="Id">  
-            <div id="resultSearch"></div>           
-        </article>    
+            <p>Ranquear Disciplinas:</p>
+            <div class="rank">
+                <input type="radio" value="comentario" /><span>Comentários</span>
+                <input type="radio" value="likes" /><span>Likes</span><br>
+                <input type="radio" value="deslikes" /><span>Deslikes</span>
+                <input type="radio" value="proporcao" /><span>Proporção</span><br>
+                <input type="radio" value="nenhum" checked/><span>Nenhum</span>
+            </div>
+
+        </section>
+        <div id="resultSearch"></div>  
     </main>
     <script src="./script/app.js"></script>
 </body>

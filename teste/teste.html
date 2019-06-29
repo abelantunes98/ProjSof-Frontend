@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="./teste.css">
+    <link rel="stylesheet" href="teste.css">
     <title>UCDb</title>
 </head>
 <body>
@@ -34,20 +34,23 @@
             </ul>
         </nav>
     </header>
-    <main>
-        <section>
-            <header><h2>Procurar Disciplinas:</h2></header>
-            <form>
-                <input id="schSubject" type="text" onkeyup="procuraDisciplina()" placeholder="Pesquisar Disciplinas:" autocomplete="of">
-                <div id="resultSearch"></div>           
-            </form>
-    
-            <form> 
-                <input id="schSubjectById" type="number" onkeyup="procuraDisciplinaById()" placeholder="ID Disciplina">
-                <div id="resultSearchById"></div>
-            </form>
+    <main>     
+        <h2>Disciplinas</h2>
+        <section class="procurar">
+            <input id="schSubject" type="text" onkeyup="procuraDisciplina()" placeholder="Pesquisar pelo Nome" autocomplete="of"> 
+            <input id="schSubjectById" type="number" onkeyup="procuraDisciplinaById()" placeholder="Id">  
+            <p>Ranquear Disciplinas</p>
+            <div class="rank">
+                <input type="radio" value="comentario" /><span>Comentários</span>
+                <input type="radio" value="likes" /><span>Likes</span><br>
+                <input type="radio" value="deslikes" /><span>Deslikes</span>
+                <input type="radio" value="proporcao" /><span>Proporção</span><br>
+                <input type="radio" value="nenhum" checked/><span>Nenhum</span>
+            </div>
+
         </section>
+        <div id="resultSearch"></div>           
     </main>
-    <script src="./script/app.js"></script>
+    <script src="testeapp.js"></script>
 </body>
 </html>

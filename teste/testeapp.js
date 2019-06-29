@@ -4,7 +4,7 @@
  */
 
  // envia um POST com um Json formado pelos dados de um usuário que deseja se cadastrar no sistema.
-async function cadastro(){
+ async function cadastro(){
     const $name = document.querySelector('#name');
     const $lname =  document.querySelector('#lname');
     const $email = document.querySelector('#email');
@@ -179,7 +179,7 @@ async function authomatizeRequest(url, method, body){
 function viewDisciplinaId(subject){
     let $disciplina = document.getElementById("resultSearch");
     $disciplina.innerHTML = '';
-    let html = `<link rel="stylesheet" href="../style/disciplina.css"/>
+    let html = `<link rel="stylesheet" href="testedisciplina.css"/>
                 <p class="disciplina">${subject.subjectName}</p>
                 <button class="verPerfil">Ver Perfil</button>`
     let novo = document.createElement("div");
