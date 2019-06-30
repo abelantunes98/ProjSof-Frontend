@@ -1,6 +1,6 @@
 
 /**
- * @author Hércules Rodrigues - herculesra - 117210908.
+ * @author Hércules Rodrigues - herculesra - 117210908 - hercules.anselmo@ccc.ufcg.edu.br .
  */
 
  // envia um POST com um Json formado pelos dados de um usuário que deseja se cadastrar no sistema.
@@ -87,37 +87,6 @@ async function procuraDisciplina(){
     }
 }
 
-function viewDisciplinas(dados){
-    const $resultSearch = document.querySelector("#resultSearch");
-    let resultado;
-    let id, nomeDisciplina;
-
-    if(Array.isArray(dados) && dados.length == 0){
-        resultado = "Infelizmente não temos esta disciplina no nosso banco de dados."
-    }
-    
-    else if (Array.isArray(dados)) {    //busca por caracteres
-        for(i = 0; i < dados.length; i++){
-            id = dados[i].id;
-            nomeDisciplina = dados[i].subjectName;
-            if(i>0)
-            resultado = resultado + `<p>${id} - ${nomeDisciplina}<p>`
-            else
-            resultado = `<p>${id} - ${nomeDisciplina}</p>`
-        }
-    }
-    else if (dados != null){    //busca pelo ID
-        id = dados.id;
-        nomeDisciplina = dados.subjectName;
-        resultado = `<p>${id} - ${nomeDisciplina}<p>`
-    }
-    
-    else{ //quando dados é null
-        resultado = "";
-    }
-    
-    $resultSearch.innerHTML = resultado;
-}
 
 async function procuraDisciplinaById(){
     const token = sessionStorage.getItem("token");
@@ -125,7 +94,7 @@ async function procuraDisciplinaById(){
         const $schSubjectById = document.querySelector("#schSubjectById");
         let subjectId = $schSubjectById.value;
         let dados
-
+        
         // const url = "http://localhost:8080/api/subjects/searchId/" + subjectId; 
         const url = "https://projsof.herokuapp.com/api/subjects/searchId/" + subjectId;
         const method = 'GET';
@@ -138,7 +107,7 @@ async function procuraDisciplinaById(){
                 console.log(dados);
                 // viewDisciplinas(dados);
                 viewDisciplinaId(dados);
-            }else{
+            }else{                         
                 alert("ID inválido da disciplina");
             }
         }else{
@@ -175,15 +144,38 @@ async function authomatizeRequest(url, method, body){
     return  await fetch(url, options);
 }
 
+function viewDisciplinas(dados){
+    let $resultSearch = document.querySelector("#resultSearch");
+    $resultSearch.innerHTML = '';
+
+    const tamanhoArray = dados.length;
+
+    //depois resolvo esse csss
+    if(tamanhoArray == 0){
+        $resultSearch.innerHTML = "Infelizmente não temos esta disciplina no nosso banco de dados."
+    }
+    for(i = 0; i < tamanhoArray; i++){
+        let html = `<link rel="stylesheet" href="../style/disciplina.css"/>
+                    <p class="disciplinas">${dados[i].id} - ${dados[i].subjectName}</p>`
+        let novo = document.createElement("div");
+        let shadow = novo.attachShadow({"mode": "open"});
+        shadow.innerHTML = html;
+        $resultSearch.appendChild(novo);
+    }
+}
+
 
 function viewDisciplinaId(subject){
     let $disciplina = document.getElementById("resultSearch");
     $disciplina.innerHTML = '';
     let html = `<link rel="stylesheet" href="../style/disciplina.css"/>
-                <p class="disciplina">${subject.subjectName}</p>
-                <button class="verPerfil">Ver Perfil</button>`
+                <div class="resultado">
+                    <p class="disciplina">${subject.subjectName}</p>
+                    <button class="verPerfil">Ver Perfil</button>
+                </div>`
     let novo = document.createElement("div");
     let shadow = novo.attachShadow({"mode": "open"});
     shadow.innerHTML = html;
     $disciplina.appendChild(novo);
+    
 }
