@@ -62,27 +62,30 @@ async function login(){
 async function procuraDisciplina(){  
     const $schSubject = document.querySelector("#schSubject");
     let subString = $schSubject.value;
-    let dados;
-
-    // Rotas para testar a API
-    const url = "http://localhost:8080/api/subjects/search/" + subString;
-    //const url = "https://projsof.herokuapp.com/api/subjects/search/" + subString;
-
-    const corpo = null; // Null pois GET não tem body;
-    const method = 'GET';
     
-    if(subString == ""){
-        dados = null;
-        viewDisciplinas(dados);
-    }else{
-        let response = await authomatizeRequest(url, method, corpo);
-        
-        if(response.ok){ 
-            dados = await response.json();
+    if (subString != "") {
+        let dados;
+
+        // Rotas para testar a API
+        const url = "http://localhost:8080/api/subjects/search/" + subString;
+        //const url = "https://projsof.herokuapp.com/api/subjects/search/" + subString;
+
+        const corpo = null; // Null pois GET não tem body;
+        const method = 'GET';
+    
+        if(subString == ""){
+            dados = null;
             viewDisciplinas(dados);
         }else{
-            alert("Ops! Alguma coisa falhou :(");
-            return;
+            let response = await authomatizeRequest(url, method, corpo);
+        
+            if(response.ok){ 
+                dados = await response.json();
+                viewDisciplinas(dados);
+            }else{
+                alert("Ops! Alguma coisa falhou :(");
+                return;
+            }
         }
     }
 }
@@ -90,17 +93,18 @@ async function procuraDisciplina(){
 
 async function procuraDisciplinaById(){
     const token = sessionStorage.getItem("token");
-    if (token != null) {
-        const $schSubjectById = document.querySelector("#schSubjectById");
-        let subjectId = $schSubjectById.value;
-        let dados
+    const $schSubjectById = document.querySelector("#schSubjectById");
+    let subjectId = $schSubjectById.value;
+    
+    if (subjectId > 0){
+        if (token != null && token != "") {
+            let dados
         
-        const url = "http://localhost:8080/api/subjects/searchId/" + subjectId; 
-        //const url = "https://projsof.herokuapp.com/api/subjects/searchId/" + subjectId;
-        const method = 'GET';
-        const body = null;
+            const url = "http://localhost:8080/api/subjects/searchId/" + subjectId; 
+            //const url = "https://projsof.herokuapp.com/api/subjects/searchId/" + subjectId;
+            const method = 'GET';
+            const body = null;
 
-        if(subjectId != 0){
             let response = await authomatizeRequest(url, method, body);       
             if(response.ok){
                 dados = await response.json();
@@ -110,9 +114,9 @@ async function procuraDisciplinaById(){
             }else{                         
                 alert("ID inválido da disciplina");
             }
-        }else{
-            dados = null;
-            viewDisciplinas(dados);
+
+        }else{                        
+           alert("Você precisa estar logado para essa pesquisa!");
         }
     }
 }
@@ -147,8 +151,11 @@ async function authomatizeRequest(url, method, body){
 function viewDisciplinas(dados){
     let $resultSearch = document.querySelector("#resultSearch");
     $resultSearch.innerHTML = '';
+    let tamanhoArray = 0;
 
-    const tamanhoArray = dados.length;
+    if(dados != null) { 
+        tamanhoArray = dados.length;
+    }
 
     //depois resolvo esse csss
     if(tamanhoArray == 0){
