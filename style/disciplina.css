@@ -44,6 +44,46 @@ button {
     padding: 5px;
 }
 
+
+ .deslike{
+    color: black;
+    grid-area: button;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column: 3;
+    background: rgb(184, 223, 162);
+    border-radius: 8px;
+    border: 2px solid black;    
+    text-align: center;
+    font-size: 16px;
+    max-height: 50%;
+    margin-bottom: 5px;
+    max-width: 150px;
+    float: left;
+    margin-right: 60%; 
+    padding: 5px;
+}
+
+
+.like{
+    color: black;
+    grid-area: button;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column: 1;
+    background: rgb(184, 223, 162);
+    border-radius: 8px;
+    border: 2px solid black;    
+    text-align: center;
+    font-size: 16px;
+    max-height: 55%;
+    max-width: 150px;
+    float: left;
+    margin-bottom: 5px;
+    margin-left: 50%; 
+    padding: 5px;
+}
+
 /* Para pesquisa de substrings */
 .disciplinas {
     color:black;
@@ -54,4 +94,28 @@ button {
     background-color:  rgb(184, 223, 162);
     margin: 10px 20px;
     padding: 20px;
+}
+
+.numLikes {
+    grid-row-start: 3;
+    grid-row-end: 3;
+    font-size: 16px;
+    float: left;
+    grid-column: 1; 
+    margin-left: 50%;
+    text-align: justify;
+    white-space: nowrap;
+    margin-top: 5px;
+}
+
+.numUnlikes {
+    font-size: 16px;
+    grid-column-start: 2;
+    grid-column-end: 3; 
+    margin-right: 0%;
+    margin-left: 100%;
+    white-space: nowrap;
+    grid-row-start: 3;
+    grid-row-end: 3;
+    margin-top: 5%;
 }

@@ -16,8 +16,8 @@ async function cadastro(){
     let senha = $senha.value;
 
     // Rotas para testar a API
-    // const url = "http://localhost:8080/api/users/";
-    const url = "https://projsof.herokuapp.com/api/users/";
+    const url = "http://localhost:8080/api/users/";
+    //const url = "https://projsof.herokuapp.com/api/users/";
 
     const corpo = {firstName: name, lastName: lname, email: email, password: senha};
     const method = 'POST';
@@ -42,8 +42,8 @@ async function login(){
     let dados;
     
     // Rotas para testar a API
-    // const url = "http://localhost:8080/api/auth/login";
-    const url = "https://projsof.herokuapp.com/api/auth/login";
+    const url = "http://localhost:8080/api/auth/login";
+    //const url = "https://projsof.herokuapp.com/api/auth/login";
     
     const corpo = {email: email, password: senha};
     const method = 'POST';
@@ -65,8 +65,8 @@ async function procuraDisciplina(){
     let dados;
 
     // Rotas para testar a API
-    // const url = "http://localhost:8080/api/subjects/search/" + subString;
-    const url = "https://projsof.herokuapp.com/api/subjects/search/" + subString;
+    const url = "http://localhost:8080/api/subjects/search/" + subString;
+    //const url = "https://projsof.herokuapp.com/api/subjects/search/" + subString;
 
     const corpo = null; // Null pois GET não tem body;
     const method = 'GET';
@@ -97,8 +97,8 @@ async function procuraDisciplinaById(){
         if (token != null && token != "") {
             let dados
         
-            // const url = "http://localhost:8080/api/subjects/searchId/" + subjectId; 
-            const url = "https://projsof.herokuapp.com/api/subjects/searchId/" + subjectId;
+             const url = "http://localhost:8080/api/subjects/searchId/" + subjectId; 
+            //const url = "https://projsof.herokuapp.com/api/subjects/searchId/" + subjectId;
             const method = 'GET';
             const body = null;
 
@@ -106,7 +106,6 @@ async function procuraDisciplinaById(){
             if(response.ok){
                 dados = await response.json();
                 console.log(dados);
-                // viewDisciplinas(dados);
                 viewDisciplinaId(dados);
             }else{                         
                 alert("ID inválido da disciplina");
@@ -170,16 +169,89 @@ function viewDisciplinas(dados){
 
 
 function viewDisciplinaId(subject){
+    window.sessionStorage.setItem("subject", JSON.stringify(subject));
     let $disciplina = document.getElementById("resultSearch");
     $disciplina.innerHTML = '';
     let html = `<link rel="stylesheet" href="../style/disciplina.css"/>
                 <div class="resultado">
                     <p class="disciplina">${subject.name}</p>
-                    <button class="verPerfil">Ver Perfil</button>
+                    <button class="verPerfil" onclick="viewPerfil()" >Ver Perfil</button>
                 </div>`
+
+    
     let novo = document.createElement("div");
+    novo.setAttribute("id","mostrar");
     let shadow = novo.attachShadow({"mode": "open"});
     shadow.innerHTML = html;
     $disciplina.appendChild(novo);
+}
+
+function viewPerfil(){
+   
+    let subject = sessionStorage.getItem("subject")
+    subject = JSON.parse(subject);
+    let $resultado = document.getElementById("resultSearch");
+    $resultado.innerHTML = '';
     
+    let html = `<link rel="stylesheet" href="../style/disciplina.css"/>
+                <div class="resultado">
+                    <p class="disciplina">${subject.name}</p>
+                    <p class="numLikes">LIKES: ${subject.likes}</p>
+                    <p class="numUnlikes">UNLIKES: ${subject.unlikes}</p>                   
+                    <button class="like" onclick="darLike()">Like</button>
+                    <button class="deslike" onclick="darUnlike()">Deslike</button>
+                </div>`
+    let novo = document.createElement("div");
+    let shadow = novo.attachShadow({"mode":"open"});
+    shadow.innerHTML = html;
+    $resultado.appendChild(novo);
+}
+
+
+async function darLike(){
+    
+    //const url = "https://projsof.herokuapp.com/api/actions/setlike/";
+    const url = "http://localhost:8080/api/actions/setLike/";
+    let subject = sessionStorage.getItem("subject")
+    subject = JSON.parse(subject);
+
+    let body = {"like_type":1,"idSubject":subject.id};
+    let method = 'POST';
+
+    let response = await authomatizeRequest(url, method, body);
+
+    if(response.ok){
+        dados = await response.json();
+    }
+
+    let likes = dados.likes;
+    let deslikes = dados.unlikes;
+    subject.likes = likes;
+    subject.unlikes = deslikes;
+    window.sessionStorage.setItem("subject", JSON.stringify(subject));
+    viewPerfil();
+}
+
+async function darUnlike(){
+    
+    //const url = "https://projsof.herokuapp.com/api/actions/setlike/";
+    const url = "http://localhost:8080/api/actions/setLike/";
+    let subject = sessionStorage.getItem("subject")
+    subject = JSON.parse(subject);
+
+    let body = {"like_type":-1,"idSubject":subject.id};
+    let method = 'POST';
+
+    let response = await authomatizeRequest(url, method, body);
+
+    if(response.ok){
+        dados = await response.json();
+    }
+
+    let likes = dados.likes;
+    let deslikes = dados.unlikes;
+    subject.likes = likes;
+    subject.unlikes = deslikes;
+    window.sessionStorage.setItem("subject", JSON.stringify(subject));
+    viewPerfil();
 }
