@@ -62,30 +62,27 @@ async function login(){
 async function procuraDisciplina(){  
     const $schSubject = document.querySelector("#schSubject");
     let subString = $schSubject.value;
-    
-    if (subString != "") {
-        let dados;
+    let dados;
 
-        // Rotas para testar a API
-        const url = "http://localhost:8080/api/subjects/search/" + subString;
-        //const url = "https://projsof.herokuapp.com/api/subjects/search/" + subString;
+    // Rotas para testar a API
+    const url = "http://localhost:8080/api/subjects/search/" + subString;
+    //const url = "https://projsof.herokuapp.com/api/subjects/search/" + subString;
 
-        const corpo = null; // Null pois GET não tem body;
-        const method = 'GET';
+    const corpo = null; // Null pois GET não tem body;
+    const method = 'GET';
     
-        if(subString == ""){
-            dados = null;
+    if(subString == ""){
+        dados = null;
+        viewDisciplinas(dados);
+    }else{
+        let response = await authomatizeRequest(url, method, corpo);
+        
+        if(response.ok){ 
+            dados = await response.json();
             viewDisciplinas(dados);
         }else{
-            let response = await authomatizeRequest(url, method, corpo);
-        
-            if(response.ok){ 
-                dados = await response.json();
-                viewDisciplinas(dados);
-            }else{
-                alert("Ops! Alguma coisa falhou :(");
-                return;
-            }
+            alert("Ops! Alguma coisa falhou :(");
+            return;
         }
     }
 }
@@ -158,7 +155,7 @@ function viewDisciplinas(dados){
     }
 
     //depois resolvo esse csss
-    if(tamanhoArray == 0){
+    if(tamanhoArray == 0 && dados != null){
         $resultSearch.innerHTML = "Infelizmente não temos esta disciplina no nosso banco de dados."
     }
     for(i = 0; i < tamanhoArray; i++){
