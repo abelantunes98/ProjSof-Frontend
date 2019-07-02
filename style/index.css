@@ -82,7 +82,7 @@ input[type="checkbox"]:checked ~ .login , input[type="checkbox"]:checked ~ .cada
     padding: 10px;
 }
 
-.menu li ul li button{
+/* .menu li ul li button{
     background-color: rgb(74, 158, 19);
     padding: 5px;
     margin-top: 10px;
@@ -90,7 +90,7 @@ input[type="checkbox"]:checked ~ .login , input[type="checkbox"]:checked ~ .cada
     border-color: rgb(36, 63, 11);  
     float: right;
     color: rgb(0, 0, 0);
-}
+} */
 
 .header{
     display: flex;
@@ -114,11 +114,6 @@ input[type="checkbox"]:checked ~ .login , input[type="checkbox"]:checked ~ .cada
     display: block;
     padding: 10px;
 }
-
-
-
-
-
 
 
 /*                  MAIN                         */
@@ -197,4 +192,42 @@ main h2{
     background-color: white;
     font-size: 16px;
     width: 180px;
+}
+
+
+/* Estilizando os botões */
+
+/* botão padrão */
+
+.btn{
+    font-family: arial;
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 700; /*negrito*/
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.btn-formulario{
+    margin: 10px;
+    border-radius:10px;
+    float: right;
+    background: rgb(51, 126, 2);
+    color: white;
+    box-shadow: 0 5px 0 rgb(2, 47, 1);
+}
+
+.btn-formulario:hover{
+    background: rgb(2,47,1);
+    color: white;
+    box-shadow: 0 5px 0 rgb(2, 19, 0);
+}
+/* impressão de pressionar botão */
+.btn-formulario:active{
+    position: relative;
+    top: 5px;
+    box-shadow: none;
 }

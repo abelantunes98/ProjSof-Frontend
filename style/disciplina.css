@@ -7,7 +7,7 @@
     "disci disci disci"
     "button button button";
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 50px 50px;
+    grid-template-rows: 50px 50px auto;
     grid-gap: 10px;
     background-color: cornflowerblue;
     border: 3px solid black;
@@ -26,7 +26,7 @@
     margin: 10px 20px;
     padding: 5px;
 }
-
+/* 
 button {
     color: black;
     grid-area: button;
@@ -42,7 +42,7 @@ button {
     max-width: 150px;
     margin: auto auto; 
     padding: 5px;
-}
+} */
 
 
  .deslike{
@@ -118,4 +118,83 @@ button {
     grid-row-start: 3;
     grid-row-end: 3;
     margin-top: 5%;
+}
+
+
+/* Estilizando os botões */
+
+/* botão padrão */
+
+.btn{
+    font-family: arial;
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 700; /*negrito*/
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-efect{
+    margin: 10px;
+    border-radius:10px;
+    background: rgb(51, 126, 2);
+    color: white;
+    box-shadow: 0 5px 0 rgb(2, 47, 1);
+}
+
+.btn-efect:hover{
+    background: rgb(2,47,1);
+    color: white;
+    box-shadow: 0 5px 0 rgb(2, 19, 0);
+}
+/* impressão de pressionar botão */
+/* relative da problema! */
+.btn-efect:active{
+    /* position: relative; */
+    top: 5px;    
+    box-shadow: none;
+}
+
+
+.btn-verPerfil{
+    grid-area: button;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column: 2;
+}
+
+.btn-like{
+    grid-area: button;
+    grid-column: 1;
+}
+
+/* para colocar suas proprias propriedades */
+.btn-like:hover{
+    background: #5B8FF0;
+    color: white;
+    box-shadow: 0 5px 0 rgb(10, 68, 177);
+}
+
+.btn-deslike:hover{
+    background: #5B8FF0;
+    color: white;
+    box-shadow: 0 5px 0 rgb(10, 68, 177);
+}
+
+.btn-deslike{
+    grid-area: button;
+    grid-column: 3;
+}
+.btn-like, .btn-deslike {
+    grid-row-start: 2;
+    grid-row-end: 2;
+    margin-left:34%;
+    margin-right: 34%;  
+    border-radius: 30px;
+    background: #99C4FF;
+    box-shadow: 0 5px 0 #5B8FF0;
 }

@@ -16,8 +16,8 @@ async function cadastro(){
     let senha = $senha.value;
 
     // Rotas para testar a API
-    const url = "http://localhost:8080/api/users/";
-    //const url = "https://projsof.herokuapp.com/api/users/";
+    // const url = "http://localhost:8080/api/users/";
+    const url = "https://projsof.herokuapp.com/api/users/";
 
     const corpo = {firstName: name, lastName: lname, email: email, password: senha};
     const method = 'POST';
@@ -42,8 +42,8 @@ async function login(){
     let dados;
     
     // Rotas para testar a API
-    const url = "http://localhost:8080/api/auth/login";
-    //const url = "https://projsof.herokuapp.com/api/auth/login";
+    // const url = "http://localhost:8080/api/auth/login";
+    const url = "https://projsof.herokuapp.com/api/auth/login";
     
     const corpo = {email: email, password: senha};
     const method = 'POST';
@@ -65,8 +65,8 @@ async function procuraDisciplina(){
     let dados;
 
     // Rotas para testar a API
-    const url = "http://localhost:8080/api/subjects/search/" + subString;
-    //const url = "https://projsof.herokuapp.com/api/subjects/search/" + subString;
+    // const url = "http://localhost:8080/api/subjects/search/" + subString;
+    const url = "https://projsof.herokuapp.com/api/subjects/search/" + subString;
 
     const corpo = null; // Null pois GET não tem body;
     const method = 'GET';
@@ -97,8 +97,8 @@ async function procuraDisciplinaById(){
         if (token != null && token != "") {
             let dados
         
-             const url = "http://localhost:8080/api/subjects/searchId/" + subjectId; 
-            //const url = "https://projsof.herokuapp.com/api/subjects/searchId/" + subjectId;
+            //  const url = "http://localhost:8080/api/subjects/searchId/" + subjectId; 
+            const url = "https://projsof.herokuapp.com/api/subjects/searchId/" + subjectId;
             const method = 'GET';
             const body = null;
 
@@ -175,7 +175,7 @@ function viewDisciplinaId(subject){
     let html = `<link rel="stylesheet" href="../style/disciplina.css"/>
                 <div class="resultado">
                     <p class="disciplina">${subject.name}</p>
-                    <button class="verPerfil" onclick="viewPerfil()" >Ver Perfil</button>
+                    <button class="btn btn-efect btn-verPerfil" onclick="viewPerfil()" >Ver Perfil</button>
                 </div>`
 
     
@@ -193,13 +193,14 @@ function viewPerfil(){
     let $resultado = document.getElementById("resultSearch");
     $resultado.innerHTML = '';
     
-    let html = `<link rel="stylesheet" href="../style/disciplina.css"/>
+    let html = `<link href="../style/disciplina.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
                 <div class="resultado">
                     <p class="disciplina">${subject.name}</p>
                     <p class="numLikes">LIKES: ${subject.likes}</p>
                     <p class="numUnlikes">UNLIKES: ${subject.unlikes}</p>                   
-                    <button class="like" onclick="darLike()">Like</button>
-                    <button class="deslike" onclick="darUnlike()">Deslike</button>
+                    <button class="btn-like btn btn-efect material-icons md-light" onclick="darLike()">thumb_up</button>
+                    <button class="btn-deslike btn btn-efect material-icons md-light" onclick="darUnlike()">thumb_down</button>
                 </div>`
     let novo = document.createElement("div");
     let shadow = novo.attachShadow({"mode":"open"});
@@ -210,8 +211,8 @@ function viewPerfil(){
 
 async function darLike(){
     
-    //const url = "https://projsof.herokuapp.com/api/actions/setlike/";
-    const url = "http://localhost:8080/api/actions/setLike/";
+    const url = "https://projsof.herokuapp.com/api/actions/setlike/";
+    // const url = "http://localhost:8080/api/actions/setLike/";
     let subject = sessionStorage.getItem("subject")
     subject = JSON.parse(subject);
 
@@ -234,8 +235,8 @@ async function darLike(){
 
 async function darUnlike(){
     
-    //const url = "https://projsof.herokuapp.com/api/actions/setlike/";
-    const url = "http://localhost:8080/api/actions/setLike/";
+    const url = "https://projsof.herokuapp.com/api/actions/setlike/";
+    // const url = "http://localhost:8080/api/actions/setLike/";
     let subject = sessionStorage.getItem("subject")
     subject = JSON.parse(subject);
 
