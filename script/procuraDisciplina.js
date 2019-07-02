@@ -4,10 +4,9 @@ import {authomatizeRequest} from "./util.js";
 /**
  * Função Responsável por retorna as disciplinas Pela SubString informada
  * 
+ * @param subString - SubString da pesquisa;
  */
-async function procuraDisciplina(){  
-    const $schSubject = document.querySelector("#schSubject");
-    let subString = $schSubject.value;
+async function procuraDisciplina(subString){  
     let dados;
 
     // Rotas para testar a API
@@ -36,12 +35,12 @@ async function procuraDisciplina(){
 /**
  * Função Responsável por procurar a discipina pelo ID
  * Envia o dado(disciplina) para a view
+ * 
+ * @param subjectId - Id da disciplina pesquisada
  */
 
-async function procuraDisciplinaById(){
+async function procuraDisciplinaById(subjectId){
     const token = sessionStorage.getItem("token");
-    const $schSubjectById = document.querySelector("#schSubjectById");
-    let subjectId = $schSubjectById.value;
     
     if (subjectId > 0){
         if (token != null && token != "") {

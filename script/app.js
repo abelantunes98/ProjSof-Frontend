@@ -3,8 +3,6 @@
  * @author Hércules Rodrigues - herculesra - 117210908 - hercules.anselmo@ccc.ufcg.edu.br .
  */
 
- // envia um POST com um Json formado pelos dados de um usuário que deseja se cadastrar no sistema.
-
 import {procuraDisciplinaById,procuraDisciplina} from "./procuraDisciplina.js";
 import {authomatizeRequest} from "./util.js";
 import {viewPerfil, viewDisciplinas, viewDisciplinaId} from "./view.js";
@@ -35,15 +33,30 @@ async function formularioLogin(){
     
     await login(email, senha);
 }
-async function init(){
-    await formularioCadastro();
-    await formularioLogin();
+
+async function getSubjectByString(){
+    const $schSubject = document.querySelector("#schSubject");
+    let subString = $schSubject.value;
+    await procuraDisciplina(subString);
 }
 
+async function getSubjectById() {
+    const $schSubjectById = document.querySelector("#schSubjectById");
+    let subjectId = $schSubjectById.value;
+    await procuraDisciplinaById(subjectId);
+}
+
+
+async function init(){
+    document.getElementById("btn-cadastro").onclick = formularioCadastro;
+    document.getElementById("btn-login").onclick = formularioLogin;
+    document.getElementById("schSubject").onkeyup = getSubjectByString;
+    document.getElementById("schSubjectById").onkeyup = getSubjectById;
+}
+
+// debugger;
 init();
 
-document.getElementById("btn-cadastro").onclick = formularioCadastro;
-document.getElementById("btn-login").onclick = formularioLogin;
 //                              Antigo
 // async function cadastro(){
 //     const $name = document.querySelector('#name');
