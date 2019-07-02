@@ -9,7 +9,6 @@ import {viewPerfil, viewDisciplinas, viewDisciplinaId} from "./view.js";
 import {cadastro, login} from "./formulario.js";
 
 async function formularioCadastro(){
-    
     const $name = document.querySelector('#name');
     const $lname =  document.querySelector('#lname');
     const $email = document.querySelector('#email');
@@ -44,6 +43,8 @@ async function getSubjectById() {
     const $schSubjectById = document.querySelector("#schSubjectById");
     let subjectId = $schSubjectById.value;
     await procuraDisciplinaById(subjectId);
+    // document.getElementById("btn-verPerfil").addEventListener("click", viewPerfil,false);//  viewPerfil();
+    // document.getElementById("btn-verPerfil").onclick = viewPerfil;
 }
 
 

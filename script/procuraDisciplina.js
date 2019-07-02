@@ -1,4 +1,5 @@
 import {authomatizeRequest} from "./util.js";
+import { viewDisciplinas, viewDisciplinaId} from "./view.js";
 
 
 /**

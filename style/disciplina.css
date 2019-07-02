@@ -160,7 +160,7 @@ button {
 }
 
 
-.btn-verPerfil{
+#btn-verPerfil{
     grid-area: button;
     grid-row-start: 2;
     grid-row-end: 2;

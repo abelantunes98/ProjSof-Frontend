@@ -1,7 +1,9 @@
+import { darLike,darDeslike } from "./perfil.js";
+
 
 /**
  * Função para mostrar os ids e nomes das disciplinas.
- * @param {*} dados - ID's e Nomes das disciplinas ques estão no banco de dados.
+ * @param  dados - ID's e Nomes das disciplinas ques estão no banco de dados.
  */
 function viewDisciplinas(dados){
     let $resultSearch = document.querySelector("#resultSearch");
@@ -16,7 +18,7 @@ function viewDisciplinas(dados){
     if(tamanhoArray == 0 && dados != null){
         $resultSearch.innerHTML = "Infelizmente não temos esta disciplina no nosso banco de dados."
     }
-    for(i = 0; i < tamanhoArray; i++){
+    for(let i = 0; i < tamanhoArray; i++){
         let html = `<link rel="stylesheet" href="../style/disciplina.css"/>
                     <p class="disciplinas">${dados[i].id} - ${dados[i].subjectName}</p>`
         let novo = document.createElement("div");
@@ -32,13 +34,14 @@ function viewDisciplinas(dados){
  */
 
 function viewDisciplinaId(subject){
+    // debugger;
     window.sessionStorage.setItem("subject", JSON.stringify(subject));
     let $disciplina = document.getElementById("resultSearch");
     $disciplina.innerHTML = '';
     let html = `<link rel="stylesheet" href="../style/disciplina.css"/>
                 <div class="resultado">
                     <p class="disciplina">${subject.name}</p>
-                    <button id="btn-verPerfil" class="btn btn-efect btn-verPerfil">Ver Perfil</button>
+                    <button id="btn-verPerfil" class="btn btn-efect" >Ver Perfil</button>
                 </div>`
 
     
@@ -47,7 +50,8 @@ function viewDisciplinaId(subject){
     let shadow = novo.attachShadow({"mode": "open"});
     shadow.innerHTML = html;
     $disciplina.appendChild(novo);
-    document.getElementById("btn-verPerfil").onclick = viewPerfil; // Não sei se precisa de algum tratamento diferente pois a função está aqui
+    document.getElementById("btn-verPerfil").onclick = viewPerfil;
+    // document.getElementById("btn-verPerfil").onclick = this.viewPerfil(); // Não sei se precisa de algum tratamento diferente pois a função está aqui
 }
 
 /**

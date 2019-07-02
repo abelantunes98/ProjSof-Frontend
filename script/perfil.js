@@ -53,3 +53,5 @@ async function darDeslike(){
     window.sessionStorage.setItem("subject", JSON.stringify(subject));
     viewPerfil();
 }
+
+export {darLike, darDeslike};
