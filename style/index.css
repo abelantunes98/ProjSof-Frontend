@@ -1,86 +1,102 @@
 /** 
     author: Hércules Rodrigues - 117210908 - hercules.anselmo@ccc.ufcg.edu.br
 */
+
 * {
     box-sizing: border-box;
 }
 
-html, body{
+html,
+body {
     margin: 0;
     padding: 0;
-    background-color: rgb(139, 230, 87);
+    background-color: FFF5EE;
 }
 
 body {
     margin: 20px;
     /* background: white; */
     padding: 20px;
-
 }
 
-ul, li , p{
+ul,
+li,
+p {
     margin: 0px;
     padding: 0px;
     list-style: none;
     font-size: 1.2rem;
     font-family: Arial, Helvetica, sans-serif;
-
 }
+
 
 /*                                            HEADER                                                       */
 
+
 /* titulo da página */
-header > a { 
-    font-family: 'Times New Roman', Times, sans-serif;
+
+header>a {
+    /*font-family: 'Times New Roman', Times, sans-serif;*/
+    font-family: 'Courier New', Courier, monospace;
     font-size: 30px;
 }
 
+
 /* controlando a margem do cabeçalho */
-body > header{
+
+body>header {
     margin-left: -40px;
     margin-right: -40px;
     margin-top: -40px;
     position: relative;
-    
 }
 
-input[type="checkbox"]{
+input[type="checkbox"] {
     display: none;
 }
 
-a,.checkBox {
+a,
+.checkBox {
     text-decoration: none;
     color: rgb(15, 15, 15);
 }
 
-input[type="checkbox"]:checked ~ .login , input[type="checkbox"]:checked ~ .cadastro{
+.checkBox:hover {
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked~.login,
+input[type="checkbox"]:checked~.cadastro {
     visibility: visible;
 }
 
-.menu>li:hover{
-    background: rgb(143, 221, 120);
+.menu>li:hover {
+    background: rgb(245, 191, 191);
     border-radius: 100px;
+    cursor: pointer;
+    box-shadow: 1px 1px #000000, 1px 1px #000000, 2px 2px #000000;
 }
 
-
-
-.login , .cadastro{
+.login,
+.cadastro {
     position: absolute;
     visibility: hidden;
     top: 90px;
-    background-color: rgb(184, 223, 162);
+    background-color: rgb(245, 191, 191);
     border: 2px solid;
+    border-radius: 10px 10px 10px 10px;
     padding: 25px;
     padding-bottom: 5px;
-    right: 80px;  
+    right: 80px;
 }
 
-.menu li ul li input{
+.menu li ul li input {
     float: left;
     margin-left: -20px;
     margin-top: 10px;
     padding: 10px;
 }
+
 
 /* .menu li ul li button{
     background-color: rgb(74, 158, 19);
@@ -92,25 +108,27 @@ input[type="checkbox"]:checked ~ .login , input[type="checkbox"]:checked ~ .cada
     color: rgb(0, 0, 0);
 } */
 
-.header{
+.header {
     display: flex;
     justify-content: space-between;
     padding: 20px;
     align-items: center;
     flex-wrap: wrap;
-    background-color: rgb(73, 177, 41);
+    background-color: rgb(243, 156, 156);
     border-bottom: 2px solid black;
 }
 
-.menu{
+.menu {
     display: flex;
 }
 
-.menu li{
+.menu li {
+    font-family: 'Courier New', Courier, monospace;
     margin-left: 10px;
 }
 
-.menu li a, .checkBox {
+.menu li a,
+.checkBox {
     display: block;
     padding: 10px;
 }
@@ -118,41 +136,32 @@ input[type="checkbox"]:checked ~ .login , input[type="checkbox"]:checked ~ .cada
 
 /*                  MAIN                         */
 
-
 main {
     display: grid;
-    grid-template-areas: 
-    "h2  h2 h2 h2 h2 h2"
-    "div result result result result oter";
+    grid-template-areas: "h2  h2 h2 h2 h2 h2" "div result result result result oter";
     grid-gap: 20px;
 }
 
-main h2{
-    
+main h2 {
     grid-area: h2;
     text-align: left;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 40px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 35px;
     padding: 20px;
-
 }
-
-
 
 .procurar {
     grid-area: div;
     border: 3px solid black;
     background-color: cornflowerblue;
-    padding:30px;
+    padding: 30px;
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 10px;
     max-height: 274px;
     max-width: 274px;
     width: 300px;
-    
 }
-
 
 
 /* #resultSearch{
@@ -171,7 +180,9 @@ main h2{
     margin-left: 40px;
 } */
 
-#schSubject, #schSubjectById, .procurar p{
+#schSubject,
+#schSubjectById,
+.procurar p {
     padding: 1vh;
     width: 20vh;
     /* margin: 0 auto; */
@@ -183,10 +194,12 @@ main h2{
     text-align: center;
 }
 
+
 /*elemento span deslikes*/
-.rank :nth-child(7){    
+
+.rank :nth-child(7) {
     margin-right: 27px;
- }
+}
 
 .procurar p {
     background-color: white;
@@ -197,13 +210,15 @@ main h2{
 
 /* Estilizando os botões */
 
+
 /* botão padrão */
 
-.btn{
+.btn {
     font-family: arial;
     font-size: 10px;
     text-transform: uppercase;
-    font-weight: 700; /*negrito*/
+    font-weight: 700;
+    /*negrito*/
     border: none;
     padding: 5px;
     cursor: pointer;
@@ -211,22 +226,25 @@ main h2{
     text-decoration: none;
 }
 
-.btn-formulario{
+.btn-formulario {
     margin: 10px;
-    border-radius:10px;
+    border-radius: 10px;
     float: right;
-    background: rgb(51, 126, 2);
-    color: white;
-    box-shadow: 0 5px 0 rgb(2, 47, 1);
+    background: rgb(243, 156, 156);
+    color: black;
+    box-shadow: 0 2px 0 rgb(33, 36, 33);
 }
 
-.btn-formulario:hover{
-    background: rgb(2,47,1);
+.btn-formulario:hover {
+    opacity: 10%;
     color: white;
-    box-shadow: 0 5px 0 rgb(2, 19, 0);
+    box-shadow: 0 3px 0 rgb(2, 19, 0);
 }
+
+
 /* impressão de pressionar botão */
-.btn-formulario:active{
+
+.btn-formulario:active {
     position: relative;
     top: 5px;
     box-shadow: none;

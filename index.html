@@ -1,6 +1,7 @@
 <!-- author: Hércules Rodrigues - 117210908 - hercules.anselmo@ccc.ufcg.edu.br -->
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./style/index.css">
@@ -8,28 +9,29 @@
     <link rel="icon" href="./images/ucdb.jpg" type="image/x-icon" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 </head>
+
 <body>
     <header class="header">
         <a href="/">UCDB<span> - Classificações e Reviews de Cursos da UFCG</span></a>
         <nav>
             <ul class="menu">
                 <li>
-                    <input class="checkBox" type="checkbox" id="checkLogin"/>
+                    <input class="checkBox" type="checkbox" id="checkLogin" />
                     <label class="checkBox" for="checkLogin">Login</label>
                     <ul class="login">
                         <li><input id="emailLogin" type="email" placeholder="E-mail"></li>
-                        <li><input id="senhaLogin" type="password" placeholder="senha"></li>
+                        <li><input id="senhaLogin" type="password" placeholder="Senha"></li>
                         <li><button id="btn-login" class="btn btn-formulario">Próximo</button></li>
                     </ul>
                 </li>
                 <li>
-                    <input class="checkBox" type="checkbox" id="checkCadastro"/>
+                    <input class="checkBox" type="checkbox" id="checkCadastro" />
                     <label class="checkBox" for="checkCadastro">Cadastro</label>
                     <ul class="cadastro">
-                        <li><input id="name" type="text" placeholder="nome"></li>
-                        <li><input id="lname" type="text" placeholder="ultimo nome"></li>
-                        <li><input id="email" type="email" placeholder="e-mail"></li>
-                        <li><input id="senha" type="password" placeholder="senha"></li>
+                        <li><input id="name" type="text" placeholder="Nome"></li>
+                        <li><input id="lname" type="text" placeholder="Sobrenome"></li>
+                        <li><input id="email" type="email" placeholder="E-mail"></li>
+                        <li><input id="senha" type="password" placeholder="Senha"></li>
                         <li><button id="btn-cadastro" class="btn btn-formulario">Próximo</button></li>
                     </ul>
                 </li>
@@ -37,11 +39,11 @@
             </ul>
         </nav>
     </header>
-    <main>     
+    <main>
         <h2>Disciplinas</h2>
         <section class="procurar">
-            <input id="schSubject" type="text" onkeyup="procuraDisciplina()" placeholder="Pesquisar pelo Nome" autocomplete="of"> 
-            <input id="schSubjectById" type="number" onkeyup="procuraDisciplinaById()" placeholder="Id">  
+            <input id="schSubject" type="text" onkeyup="procuraDisciplina()" placeholder="Pesquisar pelo Nome" autocomplete="of">
+            <input id="schSubjectById" type="number" onkeyup="procuraDisciplinaById()" placeholder="Id">
             <p>Ranquear Disciplinas:</p>
             <div class="rank">
                 <input name="rank" type="radio" value="comentario" /><span>Comentários</span>
@@ -52,8 +54,9 @@
             </div>
 
         </section>
-        <div id="resultSearch"></div>  
+        <div id="resultSearch"></div>
     </main>
     <script type="module" src="./script/app.js"></script>
 </body>
+
 </html>
