@@ -65,7 +65,7 @@ async function procuraDisciplinaById(subjectId){
            alert("Você precisa estar logado para essa pesquisa!");
         }
     } else {
-        dados = null;
+        let dados = null;
         viewDisciplinas(dados);
     }
 }

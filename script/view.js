@@ -34,14 +34,13 @@ function viewDisciplinas(dados){
  */
 
 function viewDisciplinaId(subject){
-    // debugger;
     window.sessionStorage.setItem("subject", JSON.stringify(subject));
     let $disciplina = document.getElementById("resultSearch");
     $disciplina.innerHTML = '';
     let html = `<link rel="stylesheet" href="../style/disciplina.css"/>
                 <div class="resultado">
                     <p class="disciplina">${subject.name}</p>
-                    <button id="btn-verPerfil" class="btn btn-efect" >Ver Perfil</button>
+                    <button id="btn-verPerfil" class="btn btn-efect">Ver Perfil</button>
                 </div>`
 
     
@@ -50,8 +49,7 @@ function viewDisciplinaId(subject){
     let shadow = novo.attachShadow({"mode": "open"});
     shadow.innerHTML = html;
     $disciplina.appendChild(novo);
-    document.getElementById("btn-verPerfil").onclick = viewPerfil;
-    // document.getElementById("btn-verPerfil").onclick = this.viewPerfil(); // Não sei se precisa de algum tratamento diferente pois a função está aqui
+    novo.shadowRoot.querySelector("#btn-verPerfil").onclick = viewPerfil;
 }
 
 /**
@@ -77,9 +75,8 @@ function viewPerfil(){
     let shadow = novo.attachShadow({"mode":"open"});
     shadow.innerHTML = html;
     $resultado.appendChild(novo);
-    document.getElementById("btn-like").onclick = darLike; // falta importar
-    document.getElementById("btn-deslike").onclick = darDeslike; // falta importar
-
+    novo.shadowRoot.querySelector("#btn-like").onclick = darLike;
+    novo.shadowRoot.querySelector("#btn-deslike").onclick = darDeslike;
 }
 
 export {viewDisciplinas, viewDisciplinaId, viewPerfil};

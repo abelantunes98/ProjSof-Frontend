@@ -1,4 +1,5 @@
 import {authomatizeRequest} from "./util.js";
+import { viewPerfil } from "./view.js";
 
 /**
  * Função responsável por dar o like na disciplina
@@ -7,7 +8,7 @@ async function darLike(){
     
     const url = "https://projsof.herokuapp.com/api/actions/setLike/";
     //const url = "http://localhost:8080/api/actions/setLike/";
-    let subject = sessionStorage.getItem("subject")
+    let subject = sessionStorage.getItem("subject");
     subject = JSON.parse(subject);
     let dados;
     let body = {"like_type":1,"idSubject":subject.id};
@@ -34,7 +35,7 @@ async function darDeslike(){
     
     const url = "https://projsof.herokuapp.com/api/actions/setLike/";
     //const url = "http://localhost:8080/api/actions/setLike/";
-    let subject = sessionStorage.getItem("subject")
+    let subject = sessionStorage.getItem("subject");
     subject = JSON.parse(subject);
     let dados;
     let body = {"like_type":-1,"idSubject":subject.id};
