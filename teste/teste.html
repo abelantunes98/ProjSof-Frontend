@@ -6,51 +6,16 @@
     <title>UCDb</title>
 </head>
 <body>
-    <header class="header">
-        <a href="/">UCDB<span> - Classificações e Reviews de Cursos da UFCG</span></a>
-        <nav>
-            <ul class="menu">
-                <li>
-                    <input class="checkBox" type="checkbox" id="checkLogin"/>
-                    <label class="checkBox" for="checkLogin">Login</label>
-                    <ul class="login">
-                        <li><input id="emailLogin" type="email" placeholder="E-mail"></li>
-                        <li><input id="senhaLogin" type="password" placeholder="senha"></li>
-                        <li><button onclick="login()">Próximo</button></li>
-                    </ul>
-                </li>
-                <li>
-                    <input class="checkBox" type="checkbox" id="checkCadastro"/>
-                    <label class="checkBox" for="checkCadastro">Cadastro</label>
-                    <ul class="cadastro">
-                        <li><input id="name" type="text" placeholder="nome"></li>
-                        <li><input id="lname" type="text" placeholder="ultimo nome"></li>
-                        <li><input id="email" type="email" placeholder="e-mail"></li>
-                        <li><input id="senha" type="password" placeholder="senha"></li>
-                        <li><button onclick="cadastro()">Próximo</button></li>
-                    </ul>
-                </li>
-                <li><a href="">Contato</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>     
-        <h2>Disciplinas</h2>
-        <section class="procurar">
-            <input id="schSubject" type="text" onkeyup="procuraDisciplina()" placeholder="Pesquisar pelo Nome" autocomplete="of"> 
-            <input id="schSubjectById" type="number" onkeyup="procuraDisciplinaById()" placeholder="Id">  
-            <p>Ranquear Disciplinas</p>
-            <div class="rank">
-                <input type="radio" value="comentario" /><span>Comentários</span>
-                <input type="radio" value="likes" /><span>Likes</span><br>
-                <input type="radio" value="deslikes" /><span>Deslikes</span>
-                <input type="radio" value="proporcao" /><span>Proporção</span><br>
-                <input type="radio" value="nenhum" checked/><span>Nenhum</span>
-            </div>
+    <div id="comentarioPai">
+        <p>Digite seu comentário:</p>
+        <textarea id="comentario" class="comentario" placeholder="Enter your comments..."></textarea>
+        <button id="btn-comentario">Send your message</button>
+        <div id="comentarioFilho">
+            <textarea class="resposta comentario-filho" placeholder="responder"></textarea>
+            <button id="btn-resposta">responder</button>
 
-        </section>
-        <div id="resultSearch"></div>           
-    </main>
+        </div>
+    </div>
     <script src="testeapp.js"></script>
 </body>
 </html>

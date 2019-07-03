@@ -1,0 +1,13 @@
+.comentario {
+    padding: 10px;
+    width: 300px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font: 1em sans-serif;
+    height: 5em;
+    resize: vertical;
+}
+
+.comentario:focus{
+    border: 1px solid black;
+}

@@ -1,172 +1,41 @@
-* {
+.comentario {
+    padding: 10px;
+    width: 300px;
+    -moz-box-sizing: border-box;
     box-sizing: border-box;
+    font: 1em sans-serif;
+    height: 5em;
+    resize: vertical;
 }
 
-html, body{
-    margin: 0;
-    padding: 0;
-    background-color: chartreuse;
-}
-
-body {
-    margin: 20px;
-    background: white;
-    padding: 20px;
-}
-
-ul, li , p{
-    margin: 0px;
-    padding: 0px;
-    list-style: none;
-    font-size: 1.2rem;
-    font-family: Arial, Helvetica, sans-serif;
-
-}
-
-/*                                            HEADER                                                       */
-
-input[type="checkbox"]{
-    display: none;
-}
-
-a, .checkBox {
-    text-decoration: none;
-    color: rgb(15, 15, 15);
-}
-
-input[type="checkbox"]:checked ~ .login , input[type="checkbox"]:checked ~ .cadastro{
-    visibility: visible;
-}
-
-.menu>li:hover{
-    background: rgb(143, 221, 120);
-    border-radius: 100px;
-}
-
-
-
-.login , .cadastro{
-    position: absolute;
-    visibility: hidden;
-    top: 90px;
-    background-color: rgb(184, 223, 162);
-    border: 2px solid;
-    padding: 25px;
-    padding-bottom: 5px;
-    right: 80px;  
-}
-
-.menu li ul li input{
-    float: left;
-    margin-left: -20px;
-    margin-top: 10px;
+.comentario-filho{
     padding: 10px;
+    width: 250px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font: 1em sans-serif;
+    height: 3em;
+    resize: vertical;
 }
 
-.menu li ul li button{
-    background-color: rgb(74, 158, 19);
-    padding: 5px;
-    margin-top: 10px;
-    border-radius:10px;
-    border-color: rgb(36, 63, 11);  
-    float: right;
-    color: rgb(0, 0, 0);
+.comentario:focus{
+    border: 1px solid black;
 }
 
-.header{
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    align-items: center;
-    flex-wrap: wrap;
-    background-color: rgb(73, 177, 41);
-    border-bottom: 2px solid black;
+#comentarioPai{
+    margin: 0 auto;
+    width: 400px;
+    /* Para ver as bordas da div */
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
 }
 
-.menu{
-    display: flex;
-}
-
-.menu li{
-    margin-left: 10px;
-}
-
-.menu li a, .checkBox {
-    display: block;
-    padding: 10px;
-}
-
-/*                  MAIN                         */
-
-
-main {
-    display: grid;
-    grid-template-areas: 
-    "h2  h2      h2     h2     h2"
-    "div result result result oter";
-    /* "outro outro result result result"; */
-    grid-gap: 20px;
-}
-
-main h2{
-    grid-area: h2;
-    text-align: center;
-}
-
-.procurar {
-    grid-area: div;
-    border: 3px solid black;
-    background-color: cornflowerblue;
-    padding:30px;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 10px;
-    max-height: 300px;
-    
-}
-
-
-
-#resultSearch{
-    border: 3px solid black;
-    padding: 20px;
-    margin-right: 10vh;
-    background-color: rgb(74, 202, 74);
-    color: black;
-    font-style:bolder;
-    font-size: 17px;
-    grid-area: result;
-    max-height: 600px;
-    overflow-y: scroll;
-    scrollbar-color: cornflowerblue;
-    margin-left: 40px;
-}
-
-#schSubject {
-    
-}
-
-#schSubjectById{
-   
-}
-
-#schSubject, #schSubjectById, .procurar p{
-    padding: 1vh;
-    width: 20vh;
-    /* margin: 0 auto; */
-    border-radius: 8px;
-    border: 2px solid black;
-}
-
-.procurar ::placeholder {
-    text-align: center;
-}
-
-.rank :nth-child(7){    /*elemento span deslikes*/
-    margin-right: 27px;
- }
-
-.procurar p {
-    background-color: white;
-    font-size: 17px;
+#comentarioFilho{
+    margin: 0 auto;
+    width: 400px;
+    /* Para ver as bordas da div */
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
 }
