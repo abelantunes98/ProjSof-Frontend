@@ -18,26 +18,27 @@ $botao.onclick = () => {
         let shadow = novo.attachShadow({"mode": "open"});
         shadow.innerHTML = html;
         $resultado.appendChild(novo);
-        novo.shadowRoot.querySelector("#btn-comentario"+id).onclick = responderComentario;
+        novo.shadowRoot.querySelector("#btn-comentario"+numero).onclick = () =>{
+            let html = `
+            <div>
+                <input id="resposta" type="text" />
+                <button id="btn-resposta"> enviar</button>
+            </div>`
+            shadow.innerHTML += html;
+            novo.shadowRoot.querySelector("#btn-resposta").onclick = () =>{
+            $responder = novo.shadowRoot.querySelector("#resposta");
+                let resposta = $responder.value;
+
+                let html= `
+                        <p>${resposta}</p>
+                        `
+
+                shadow.innerHTML += html;
+            }; 
+        };
         
 }
 
 function responderComentario(){
-    let html = `
-            <div>
-                <input id="resposta" type="text" />
-                <button id="btn-resposta"> enviar</button>
-            </div>
-                `
-    shadow.innerHTML += html;
-    novo.shadowRoot.querySelector("#btn-resposta").onclick = () =>{
-        $responder = novo.shadowRoot.querySelector("#resposta");
-        let resposta = $responder.value;
-
-        let html= `
-                    <p>${resposta}</p>
-                    `
-
-        shadow.innerHTML += html;
-    };      
+        
 }

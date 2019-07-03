@@ -55,4 +55,25 @@ async function darDeslike(){
     viewPerfil();
 }
 
-export {darLike, darDeslike};
+async function enviaComentario(){
+    $div = document.getElementById("mostrar");
+    $comentario = $div.shadowRoot.querySelector("#msgPai");
+    let msg = $comentario.value;
+
+    let subject = JSON.parse(sessionStorage.getItem("subject"));
+
+    const url = "https://projsof.herokuapp.com/api/comments/postComment/";
+    const corpo = {"id_subject":subject.id_subject, "comment_msg": msg};
+    const method = 'POST';
+
+    let response = await authomatizeRequest(url,method,corpo);
+
+    if(response.ok){
+        //pensa no que faz
+    }else{
+        alert("Imporssível enviar comentário");
+    }
+
+}
+
+export {darLike, darDeslike, enviaComentario};

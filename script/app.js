@@ -5,6 +5,7 @@
 
 import {procuraDisciplinaById,procuraDisciplina} from "./procuraDisciplina.js";
 import {cadastro, login} from "./formulario.js";
+import {rankPorComentario, rankPorLike, rankPorDeslike, rankPorProporcao} from "./rank.js";
 
 async function formularioCadastro(){
     const $name = document.querySelector('#name');
@@ -49,6 +50,10 @@ async function init(){
     document.getElementById("btn-login").onclick = formularioLogin;
     document.getElementById("schSubject").onkeyup = getSubjectByString;
     document.getElementById("schSubjectById").onkeyup = getSubjectById;
+    document.querySelector(".rank-comentario").onclick = rankPorComentario;
+    document.querySelector(".rank-like").onclick = rankPorLike;
+    document.querySelector(".rank-deslike").onclick = rankPorDeslike;
+    document.querySelector(".rank-proporcao").onclick = rankPorProporcao;
 }
 
 init();

@@ -1,4 +1,4 @@
-import { darLike,darDeslike } from "./perfil.js";
+import { darLike,darDeslike,enviaComentario } from "./perfil.js";
 
 
 /**
@@ -61,22 +61,27 @@ function viewPerfil(){
     subject = JSON.parse(subject);
     let $resultado = document.getElementById("resultSearch");
     $resultado.innerHTML = '';
-    
     let html = `<link href="../style/disciplina.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
                 <div class="resultado">
                     <p class="disciplina">${subject.name}</p>
                     <p class="numLikes">LIKES: ${subject.likes}</p>
-                    <p class="numUnlikes">UNLIKES: ${subject.unlikes}</p>                   
+                    <p class="numDeslikes">DESLIKES: ${subject.unlikes}</p>                   
                     <button id="btn-like" class="btn btn-efect material-icons md-light">thumb_up</button>
                     <button id="btn-deslike" class="btn btn-efect material-icons md-light">thumb_down</button>
+                    <div id="comentario">
+                        <input id="msgPai" type="text" placeholder="Insira um comentário." />
+                        <button id="btn-msgPai">Enviar</button>
+                    </div>
                 </div>`
     let novo = document.createElement("div");
+    novo.setAttribute("id","mostrar");
     let shadow = novo.attachShadow({"mode":"open"});
     shadow.innerHTML = html;
     $resultado.appendChild(novo);
     novo.shadowRoot.querySelector("#btn-like").onclick = darLike;
     novo.shadowRoot.querySelector("#btn-deslike").onclick = darDeslike;
+    novo.shadowRoot.querySelector("#btn-msgPai").onclick = enviaComentario;
 }
 
 export {viewDisciplinas, viewDisciplinaId, viewPerfil};

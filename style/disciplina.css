@@ -6,7 +6,7 @@
     display: grid;
     grid-template-areas: "disci disci disci" "button button button";
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 50px 50px auto;
+    grid-template-rows: 50px 50px 50px auto;
     grid-gap: 10px;
     background-color: #4CA7FF;
     border-radius: 10px 10px 10px 10px;
@@ -98,27 +98,19 @@ button {
 }
 
 .numLikes {
-    grid-row-start: 3;
-    grid-row-end: 3;
-    font-size: 16px;
-    float: left;
     grid-column: 1;
-    margin-left: 50%;
-    text-align: justify;
-    white-space: nowrap;
-    margin-top: 5px;
+    grid-row: 3;
+    font-size: 16px;
+    text-align: center;
+    height: 50px;
 }
 
-.numUnlikes {
+.numDeslikes {
     font-size: 16px;
-    grid-column-start: 2;
-    grid-column-end: 3;
-    margin-right: 0%;
-    margin-left: 100%;
-    white-space: nowrap;
-    grid-row-start: 3;
-    grid-row-end: 3;
-    margin-top: 5%;
+    grid-column: 3;
+    grid-row: 3;
+    text-align: center;
+    height: 50px;
 }
 
 
@@ -199,13 +191,28 @@ button {
     grid-column: 3;
 }
 
-.btn-like,
-.btn-deslike {
-    grid-row-start: 2;
-    grid-row-end: 2;
+#btn-like{
+    grid-column: 1;
+}
+
+#btn-deslike {
+    grid-column: 3;
+}
+#btn-like,
+#btn-deslike {
+    grid-row: 2;
     margin-left: 34%;
     margin-right: 34%;
     border-radius: 30px;
     background: #99C4FF;
     box-shadow: 0 5px 0 #5B8FF0;
+}
+
+
+
+/*  estilizando comentario */
+
+#comentario{
+    grid-column: 2;
+    grid-row: 3;
 }
