@@ -15,7 +15,7 @@ body {
 
 body {
     margin: 20px;
-    /* background: white; */
+    background: rgba(ec, ec, ec, 10);
     padding: 20px;
 }
 
@@ -38,6 +38,8 @@ p {
 header>a {
     /*font-family: 'Times New Roman', Times, sans-serif;*/
     font-family: 'Courier New', Courier, monospace;
+    color: white;
+    font-weight: bold;
     font-size: 30px;
 }
 
@@ -55,13 +57,20 @@ input[type="checkbox"] {
     display: none;
 }
 
+
+/* Login e cadastro */
+
 a,
 .checkBox {
     text-decoration: none;
-    color: rgb(15, 15, 15);
+    color: white;
 }
 
+
+/* Menu com login e cadastro */
+
 .checkBox:hover {
+    color: black;
     cursor: pointer;
 }
 
@@ -70,19 +79,26 @@ input[type="checkbox"]:checked~.cadastro {
     visibility: visible;
 }
 
+
+/* Itens do menu ao passar do mouse */
+
 .menu>li:hover {
-    background: rgb(245, 191, 191);
     border-radius: 100px;
+    background-color: #94C9FF;
     cursor: pointer;
+    font-weight: bolder;
     box-shadow: 1px 1px #000000, 1px 1px #000000, 2px 2px #000000;
 }
+
+
+/* Subtela de login/cadastro */
 
 .login,
 .cadastro {
     position: absolute;
     visibility: hidden;
     top: 90px;
-    background-color: rgb(245, 191, 191);
+    background-color: #94C9FF;
     border: 2px solid;
     border-radius: 10px 10px 10px 10px;
     padding: 25px;
@@ -108,13 +124,16 @@ input[type="checkbox"]:checked~.cadastro {
     color: rgb(0, 0, 0);
 } */
 
+
+/* navbar */
+
 .header {
     display: flex;
     justify-content: space-between;
     padding: 20px;
     align-items: center;
     flex-wrap: wrap;
-    background-color: rgb(243, 156, 156);
+    background-color: #4CA7FF;
     border-bottom: 2px solid black;
 }
 
@@ -125,6 +144,7 @@ input[type="checkbox"]:checked~.cadastro {
 .menu li {
     font-family: 'Courier New', Courier, monospace;
     margin-left: 10px;
+    color: white;
 }
 
 .menu li a,
@@ -153,7 +173,8 @@ main h2 {
 .procurar {
     grid-area: div;
     border: 3px solid black;
-    background-color: cornflowerblue;
+    border-radius: 10px 10px 10px 10px;
+    background-color: #4CA7FF;
     padding: 30px;
     display: grid;
     grid-template-columns: 1fr;
@@ -230,13 +251,13 @@ main h2 {
     margin: 10px;
     border-radius: 10px;
     float: right;
-    background: rgb(243, 156, 156);
+    background: #4CA7FF;
     color: black;
     box-shadow: 0 2px 0 rgb(33, 36, 33);
 }
 
 .btn-formulario:hover {
-    opacity: 10%;
+    background: rgb(129, 190, 248);
     color: white;
     box-shadow: 0 3px 0 rgb(2, 19, 0);
 }

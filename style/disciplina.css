@@ -1,31 +1,32 @@
 /** 
     author: Hércules Rodrigues - 117210908 - hercules.anselmo@ccc.ufcg.edu.br
 */
+
 .resultado {
     display: grid;
-    grid-template-areas: 
-    "disci disci disci"
-    "button button button";
+    grid-template-areas: "disci disci disci" "button button button";
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 50px 50px auto;
     grid-gap: 10px;
-    background-color: cornflowerblue;
+    background-color: #4CA7FF;
+    border-radius: 10px 10px 10px 10px;
     border: 3px solid black;
 }
-
 
 .disciplina {
     grid-area: disci;
     align-self: center;
-    color:black;
-    font-family: "Arial Black", Gadget, sans-serif;
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
     text-align: center;
-    border-radius: 8px;
+    border-radius: 10px;
     border: 3px solid black;
-    background-color:  rgb(184, 223, 162);
+    background-color: rgb(184, 223, 162);
     margin: 10px 20px;
     padding: 5px;
 }
+
+
 /* 
 button {
     color: black;
@@ -44,8 +45,7 @@ button {
     padding: 5px;
 } */
 
-
- .deslike{
+.deslike {
     color: black;
     grid-area: button;
     grid-row-start: 2;
@@ -53,19 +53,18 @@ button {
     grid-column: 3;
     background: rgb(184, 223, 162);
     border-radius: 8px;
-    border: 2px solid black;    
+    border: 2px solid black;
     text-align: center;
     font-size: 16px;
     max-height: 50%;
     margin-bottom: 5px;
     max-width: 150px;
     float: left;
-    margin-right: 60%; 
+    margin-right: 60%;
     padding: 5px;
 }
 
-
-.like{
+.like {
     color: black;
     grid-area: button;
     grid-row-start: 2;
@@ -73,25 +72,27 @@ button {
     grid-column: 1;
     background: rgb(184, 223, 162);
     border-radius: 8px;
-    border: 2px solid black;    
+    border: 2px solid black;
     text-align: center;
     font-size: 16px;
     max-height: 55%;
     max-width: 150px;
     float: left;
     margin-bottom: 5px;
-    margin-left: 50%; 
+    margin-left: 50%;
     padding: 5px;
 }
 
+
 /* Para pesquisa de substrings */
+
 .disciplinas {
-    color:black;
-    font-family: "Arial Black", Gadget, sans-serif;
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
     text-align: justify;
     border-radius: 8px;
     border: 3px solid black;
-    background-color:  rgb(184, 223, 162);
+    background-color: rgb(184, 223, 162);
     margin: 10px 20px;
     padding: 20px;
 }
@@ -101,7 +102,7 @@ button {
     grid-row-end: 3;
     font-size: 16px;
     float: left;
-    grid-column: 1; 
+    grid-column: 1;
     margin-left: 50%;
     text-align: justify;
     white-space: nowrap;
@@ -111,7 +112,7 @@ button {
 .numUnlikes {
     font-size: 16px;
     grid-column-start: 2;
-    grid-column-end: 3; 
+    grid-column-end: 3;
     margin-right: 0%;
     margin-left: 100%;
     white-space: nowrap;
@@ -123,13 +124,15 @@ button {
 
 /* Estilizando os botões */
 
+
 /* botão padrão */
 
-.btn{
+.btn {
     font-family: arial;
     font-size: 10px;
     text-transform: uppercase;
-    font-weight: 700; /*negrito*/
+    font-weight: 700;
+    /*negrito*/
     border: none;
     padding: 5px;
     cursor: pointer;
@@ -138,62 +141,70 @@ button {
     text-align: center;
 }
 
-.btn-efect{
+.btn-efect {
     margin: 10px;
-    border-radius:10px;
+    border-radius: 10px;
     background: rgb(51, 126, 2);
     color: white;
     box-shadow: 0 5px 0 rgb(2, 47, 1);
 }
 
-.btn-efect:hover{
-    background: rgb(2,47,1);
+.btn-efect:hover {
+    background: rgb(2, 47, 1);
     color: white;
     box-shadow: 0 5px 0 rgb(2, 19, 0);
 }
+
+
 /* impressão de pressionar botão */
+
+
 /* relative da problema! */
-.btn-efect:active{
+
+.btn-efect:active {
     /* position: relative; */
-    top: 5px;    
+    top: 5px;
     box-shadow: none;
 }
 
-
-#btn-verPerfil{
+#btn-verPerfil {
     grid-area: button;
     grid-row-start: 2;
     grid-row-end: 2;
     grid-column: 2;
 }
 
-.btn-like{
+.btn-like {
     grid-area: button;
     grid-column: 1;
 }
 
+
 /* para colocar suas proprias propriedades */
-.btn-like:hover{
+
+.btn-like:hover {
     background: #5B8FF0;
     color: white;
     box-shadow: 0 5px 0 rgb(10, 68, 177);
 }
 
-.btn-deslike:hover{
+.btn-deslike:hover {
     background: #5B8FF0;
     color: white;
     box-shadow: 0 5px 0 rgb(10, 68, 177);
 }
 
-.btn-deslike{
+.btn-deslike {
     grid-area: button;
     grid-column: 3;
 }
-.btn-like, .btn-deslike {
+
+.btn-like,
+.btn-deslike {
     grid-row-start: 2;
     grid-row-end: 2;
-    margin-left:34%;
-    margin-right: 34%;  
+    margin-left: 34%;
+    margin-right: 34%;
     border-radius: 30px;
     background: #99C4FF;
     box-shadow: 0 5px 0 #5B8FF0;
