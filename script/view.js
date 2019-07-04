@@ -1,4 +1,4 @@
-import { darLike,darDeslike,enviaComentario,deletaComentario } from "./perfil.js";
+import { darLike, darDeslike, enviaComentario, deletaComentario} from "./perfil.js";
 
 
 /**
@@ -95,7 +95,8 @@ function viewComentario(){
     for(let i=0; i < comentarios.length; i++){
         let tamanho_resp = comentarios[i].comments_resp.length;
         let id_button = "btn-comentPai"+comentarios[i].id;
-        idsBotoes.push([id_button, comentarios[i].id]);
+        let respComments = "btn-comentsResp"+comentarios[i].id;
+        idsBotoes.push([id_button, comentarios[i].id, respComments]);
         html += `
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
                     <div class="comentarioPai">
@@ -103,27 +104,54 @@ function viewComentario(){
                     <button id="${id_button}" class="material-icons">delete</button>
                     <h4>${comentarios[i].user_name}</h4>
                     <time>${comentarios[i].data}</time>
-                    <button>Responder</button>
-                    </div>
-                    <div class="comentarioFilho">`
-        for(let j=0; j < tamanho_resp; j++){
-            html += `
-                    <p>${comentarios[i].comments_resp[j].comment_msg}</p>
-                    <button class="material-icons">delete</button>
-                    `
+                    <button id="${respComments}">Respostas</button>
+                    </div>`
+      
         }
-        html += `</div>`
-
-    }
-    
+        //html += `</div>`    
     $divComent.innerHTML = html;
 
     idsBotoes.forEach(idVez => {
-        document.getElementById(idVez[0]).onclick = (() => {deletaComentario(idVez[1])});    
-    });
-    
-
+        document.getElementById(idVez[0]).onclick = (() => {deletaComentario(idVez[1])});
+        document.getElementById(idVez[2]).onclick = (() => {viewRespComentario(idVez[1])});    
+    }); 
 }
+    
+    function viewRespComentario(commentId){
+        let $divComent = document.getElementById("resultComentario");
+        let idsBotoes = new Array();
+        let subject = sessionStorage.getItem("subject");
+        let comentarios = JSON.parse(subject).comments;
+        let html = `<button id="voltar" class="material-icons">undo</button>`;
+        let comment;
+        comentarios.forEach(commentVez => {
+            if (commentVez.id == commentId) {
+                comment = commentVez;
+            }
+        });
+        let commentsResp = comment.comments_resp;
+        let tamanho_resp = commentsResp.length;
+        for(let i=0; i < tamanho_resp; i++){
+            let id_button = "btn-comentFilho"+commentsResp[i].id;
+            idsBotoes.push([id_button, commentsResp[i].id]);
+            html += `
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+                        <div class="comentarioFilho">
+                        <p>${commentsResp[i].comment_msg}</p>
+                        <button id="${id_button}" class="material-icons">delete</button>
+                        <h4>${commentsResp[i].user_name}</h4>
+                        <time>${commentsResp[i].data}</time>
+                        </div>`
+    
+        }
+        
+        $divComent.innerHTML = html;
+
+        idsBotoes.forEach(idVez => {
+            document.getElementById(idVez[0]).onclick = (() => {deletaComentario(idVez[1])});
+        }); 
+        document.getElementById("voltar").onclick = (() => {viewPerfil()});    
+    }   
 
 
 export {viewDisciplinas, viewDisciplinaId, viewPerfil, viewComentario};
