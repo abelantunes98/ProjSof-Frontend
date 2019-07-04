@@ -1,4 +1,4 @@
-import { darLike,darDeslike,enviaComentario } from "./perfil.js";
+import { darLike,darDeslike,enviaComentario,deletaComentario } from "./perfil.js";
 
 
 /**
@@ -82,6 +82,40 @@ function viewPerfil(){
     novo.shadowRoot.querySelector("#btn-like").onclick = darLike;
     novo.shadowRoot.querySelector("#btn-deslike").onclick = darDeslike;
     novo.shadowRoot.querySelector("#btn-msgPai").onclick = enviaComentario;
+    viewComentario();
 }
 
-export {viewDisciplinas, viewDisciplinaId, viewPerfil};
+
+function viewComentario(){
+    let $divComent = document.getElementById("resultComentario");
+    let subject = sessionStorage.getItem("subject");
+    let comentarios = JSON.parse(subject).comments;
+    let html = "";
+    for(let i=0; i < comentarios.length; i++){
+        let tamanho_resp = comentarios[i].comments_resp.length;
+        let id_button = "btn-comentPai"+comentarios[i].id;
+        html += `
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+                    <div class="comentarioPai">
+                    <p>${comentarios[i].comment_msg}</p>
+                    <button id="${id_button}" class="material-icons">delete</button>
+                    <time>${comentarios[i].data}</time>
+                    <button>Responder</button>
+                    </div>
+                    <div class="comentarioFilho">`
+        for(let j=0; j < tamanho_resp; j++){
+            html += `
+                    <p>${comentarios[i].comments_resp[j].comment_msg}</p>
+                    <button class="material-icons">delete</button>
+                    `
+        }
+        html += `</div>`
+
+        document.getElementById("btn-comentPai"+comentarios[i].id).onclick = (() => {deletaComentario(comentarios[i].id)});
+    }
+
+    $divComent.innerHTML = html;
+}
+
+
+export {viewDisciplinas, viewDisciplinaId, viewPerfil, viewComentario};

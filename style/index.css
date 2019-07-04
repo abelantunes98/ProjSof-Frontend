@@ -158,7 +158,11 @@ input[type="checkbox"]:checked~.cadastro {
 
 main {
     display: grid;
-    grid-template-areas: "h2  h2 h2 h2 h2 h2" "div result result result result oter";
+    grid-template-areas: 
+    "h2  h2 h2 h2 h2 h2" 
+    "div result result result result comentario";
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 100px 274px 50px;
     grid-gap: 20px;
 }
 
@@ -184,23 +188,6 @@ main h2 {
     width: 300px;
 }
 
-
-/* #resultSearch{
-    border: 3px solid black;
-    padding: 20px;
-    margin-right: 10vh;
-    background-color: rgb(74, 202, 74);
-    color: black;
-    font-style:bolder;
-    font-size: 17px;
-    grid-area: result;
-    max-height: 600px;
-    max-width: 800px;
-    overflow-y: scroll;
-    scrollbar-color: cornflowerblue;
-    margin-left: 40px;
-} */
-
 #schSubject,
 #schSubjectById,
 .procurar p {
@@ -215,6 +202,9 @@ main h2 {
     text-align: center;
 }
 
+#resultSearch{
+    grid-area: result;
+}
 
 /*elemento span deslikes*/
 
@@ -269,4 +259,10 @@ main h2 {
     position: relative;
     top: 5px;
     box-shadow: none;
+}
+
+/*      comentarios     */
+
+#resultComentario{
+    grid-area: comentario;
 }

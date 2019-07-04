@@ -6,6 +6,7 @@
 import {procuraDisciplinaById,procuraDisciplina} from "./procuraDisciplina.js";
 import {cadastro, login} from "./formulario.js";
 import {rankPorComentario, rankPorLike, rankPorDeslike, rankPorProporcao} from "./rank.js";
+import {deletaComentario} from "./perfil.js";
 
 async function formularioCadastro(){
     const $name = document.querySelector('#name');

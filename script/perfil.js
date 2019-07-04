@@ -1,5 +1,5 @@
 import {authomatizeRequest} from "./util.js";
-import { viewPerfil } from "./view.js";
+import { viewPerfil,viewComentario} from "./view.js";
 
 /**
  * Função responsável por dar o like na disciplina
@@ -56,24 +56,46 @@ async function darDeslike(){
 }
 
 async function enviaComentario(){
-    $div = document.getElementById("mostrar");
-    $comentario = $div.shadowRoot.querySelector("#msgPai");
+    let $mostrar = document.getElementById("mostrar");
+    let $comentario = $mostrar.shadowRoot.querySelector("#msgPai");
+    
+
     let msg = $comentario.value;
 
     let subject = JSON.parse(sessionStorage.getItem("subject"));
-
+    
     const url = "https://projsof.herokuapp.com/api/comments/postComment/";
-    const corpo = {"id_subject":subject.id_subject, "comment_msg": msg};
+    const corpo = {"id_subject":subject.id, "comment_msg": msg};
     const method = 'POST';
 
     let response = await authomatizeRequest(url,method,corpo);
 
     if(response.ok){
-        //pensa no que faz
+        let dados = await response.json();
+        dados.comments[dados.comments.length - 1].comments_resp = [];
+        sessionStorage.setItem("subject",JSON.stringify(dados));
+        viewPerfil();
     }else{
         alert("Imporssível enviar comentário");
     }
 
 }
 
-export {darLike, darDeslike, enviaComentario};
+async function deletaComentario(idComentario){
+
+    const url = "https://projsof.herokuapp.com/api/comments/deleteComment/"+ idComentario;
+    const method = 'DELETE';
+    const corpo = null;
+
+    let response = await authomatizeRequest(url,method,corpo);
+
+    if(response.ok){
+        viewPerfil();
+    }else{
+        alert("Esse comentario não pode ser apagado por você");
+    }
+
+
+}
+
+export {darLike, darDeslike, enviaComentario,deletaComentario};
