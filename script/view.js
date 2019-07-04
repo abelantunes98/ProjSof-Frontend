@@ -99,9 +99,9 @@ function viewComentario(){
         html += `
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
                     <div class="comentarioPai">
-                    <h5>${comentarios[i].comment_msg}</h5>
+                    <p>${comentarios[i].comment_msg}</p>
                     <button id="${id_button}" class="material-icons">delete</button>
-                    <h6>${comentarios[i].user_name}</h6>
+                    <h4>${comentarios[i].user_name}</h4>
                     <time>${comentarios[i].data}</time>
                     <button>Responder</button>
                     </div>
