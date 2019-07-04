@@ -256,7 +256,8 @@ main h2 {
     grid-area: coment;
 }
 
-.comentarioPai {
+.comentarioPai,
+.comentarioFilho {
     display: grid;
     grid-template-areas: "msg msg" "autor hora";
     grid-gap: 10px;
@@ -264,7 +265,7 @@ main h2 {
     grid-template-rows: 100px 50px
 }
 
-#msg-pai {
+.msg {
     margin-top: 30px;
     padding: 20px;
     text-align: left;
@@ -276,7 +277,7 @@ main h2 {
     overflow-y: scroll;
 }
 
-#hora {
+.hora {
     grid-area: hora;
     padding: 20px;
     text-align: right;
@@ -285,7 +286,8 @@ main h2 {
     border-bottom-right-radius: 20px;
 }
 
-#nome-usuario {
+#nome-usuario,
+.user-nome {
     border-bottom: 2px solid black;
     border-bottom-left-radius: 20px;
     border-left: 2px solid black;
@@ -318,6 +320,3 @@ main h2 {
     margin-left: 65%;
     margin-top: 10%;
 }
-
-
-/*caixa do comentario*/
