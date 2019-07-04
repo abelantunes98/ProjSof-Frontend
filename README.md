@@ -27,10 +27,13 @@ O UFCG Cursos database é uma aplicação para classificação e reviews de disc
 * Um usuário autenticado é capaz de adicionar um comentário em uma disciplina. esse comentário é adicionado na shadow e possui um web-component para sua renderização, ao ser postado, o comentário poderá ter uma resposta.
 
 - [x] Caso de uso 5: Apagar comentários de uma disciplina
+
+* texto do caso de uso 5
+
 - [x] Caso de uso 6: Dar/retirar like em uma disciplina
 
 * Os eventos de like/deslike na disciplina são independentes entre si, já que os dois não podem ser dados simultaneamente na mesma disciplina. Ambos acessados através das rotas no back-end, a view de um perfil de disciplina possui dois botões, sendo um para like e outro para deslike e nele a lógica do back-end é utilizada, e o like/deslike é registrado na disciplina. 
 
 - [x] Caso de uso 7: Mostrar o ranking das disciplinas
 
-* Segue a mesma ideia do caso de uso 1, exceto pelo fato de trazer todas as disciplina ordenadas segundo algum critério, seja esse critério: número de likes, número de deslikes, número de comentários ou proporção de likes/deslikes. O usuário cadastrado seleciona o checkbox correspondente e a sua opção de ranking, faz a busca na api e trás a listagem das disciplinas ordenadas seguindo aquele critério.
+* Segue a mesma ideia do caso de uso 1, exceto pelo fato de trazer todas as disciplina ordenadas segundo algum critério, seja esse critério: número de likes, número de deslikes, número de comentários ou proporção de likes/(likes+deslikes). O usuário cadastrado seleciona o checkbox correspondente e a sua opção de ranking, faz a busca na api e trás a listagem das disciplinas ordenadas seguindo aquele critério.
