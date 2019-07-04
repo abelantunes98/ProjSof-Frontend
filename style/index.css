@@ -114,17 +114,6 @@ input[type="checkbox"]:checked~.cadastro {
 }
 
 
-/* .menu li ul li button{
-    background-color: rgb(74, 158, 19);
-    padding: 5px;
-    margin-top: 10px;
-    border-radius:10px;
-    border-color: rgb(36, 63, 11);  
-    float: right;
-    color: rgb(0, 0, 0);
-} */
-
-
 /* navbar */
 
 .header {
@@ -158,11 +147,9 @@ input[type="checkbox"]:checked~.cadastro {
 
 main {
     display: grid;
-    grid-template-areas: 
-    "h2  h2 h2 h2 h2 h2" 
-    "div result result result result comentario";
+    grid-template-areas: "h2  h2 h2 h2 h2 h2" "div result result result result oter" "div coment coment coment coment oter";
     grid-template-columns: repeat(6, 1fr);
-    grid-auto-rows: 100px 274px 50px;
+    grid-auto-rows: 100px 274px 100px 100px;
     grid-gap: 20px;
 }
 
@@ -202,9 +189,10 @@ main h2 {
     text-align: center;
 }
 
-#resultSearch{
+#resultSearch {
     grid-area: result;
 }
+
 
 /*elemento span deslikes*/
 
@@ -261,8 +249,75 @@ main h2 {
     box-shadow: none;
 }
 
+
 /*      comentarios     */
 
-#resultComentario{
-    grid-area: comentario;
+#resultComentario {
+    grid-area: coment;
 }
+
+.comentarioPai {
+    display: grid;
+    grid-template-areas: "msg msg" "autor hora";
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 100px 50px
+}
+
+#msg-pai {
+    margin-top: 30px;
+    padding: 20px;
+    text-align: left;
+    border: 2px solid black;
+    border-right: 0px;
+    border-radius: 20px;
+    width: 80%;
+    grid-area: msg;
+    overflow-y: scroll;
+}
+
+#hora {
+    grid-area: hora;
+    padding: 20px;
+    text-align: right;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom-right-radius: 20px;
+}
+
+#nome-usuario {
+    border-bottom: 2px solid black;
+    border-bottom-left-radius: 20px;
+    border-left: 2px solid black;
+    text-align: left;
+    padding: 20px;
+    grid-area: autor;
+}
+
+.btn-apagar {
+    border: 2px solid black;
+    grid-area: msg;
+    grid-column: 2;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    z-index: 1;
+    margin-left: 86%;
+    margin-top: 10%;
+}
+
+.btn-responder {
+    border: 2px solid black;
+    grid-area: msg;
+    grid-column: 2;
+    cursor: pointer;
+    width: 80px;
+    height: 40px;
+    text-align: justify;
+    z-index: 1;
+    margin-left: 65%;
+    margin-top: 10%;
+}
+
+
+/*caixa do comentario*/
