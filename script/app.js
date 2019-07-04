@@ -1,19 +1,18 @@
-
 /**
  * @author Hércules Rodrigues - herculesra - 117210908 - hercules.anselmo@ccc.ufcg.edu.br .
  */
 
-import {procuraDisciplinaById,procuraDisciplina} from "./procuraDisciplina.js";
-import {cadastro, login} from "./formulario.js";
-import {rankPorComentario, rankPorLike, rankPorDeslike, rankPorProporcao} from "./rank.js";
-import {deletaComentario} from "./perfil.js";
+import { procuraDisciplinaById, procuraDisciplina } from "./procuraDisciplina.js";
+import { cadastro, login } from "./formulario.js";
+import { rankPorComentario, rankPorLike, rankPorDeslike, rankPorProporcao } from "./rank.js";
 
-async function formularioCadastro(){
+
+async function formularioCadastro() {
     const $name = document.querySelector('#name');
-    const $lname =  document.querySelector('#lname');
+    const $lname = document.querySelector('#lname');
     const $email = document.querySelector('#email');
     const $senha = document.querySelector('#senha');
-    
+
     let name = $name.value;
     let lname = $lname.value;
     let email = $email.value;
@@ -23,17 +22,17 @@ async function formularioCadastro(){
 
 }
 
-async function formularioLogin(){
+async function formularioLogin() {
     const $emailLogin = document.querySelector('#emailLogin');
     const $senhaLogin = document.querySelector('#senhaLogin');
-    
+
     let email = $emailLogin.value;
     let senha = $senhaLogin.value;
-    
+
     await login(email, senha);
 }
 
-async function getSubjectByString(){
+async function getSubjectByString() {
     const $schSubject = document.querySelector("#schSubject");
     let subString = $schSubject.value;
     await procuraDisciplina(subString);
@@ -46,7 +45,7 @@ async function getSubjectById() {
 }
 
 
-async function init(){
+async function init() {
     document.getElementById("btn-cadastro").onclick = formularioCadastro;
     document.getElementById("btn-login").onclick = formularioLogin;
     document.getElementById("schSubject").onkeyup = getSubjectByString;
@@ -58,6 +57,3 @@ async function init(){
 }
 
 init();
-
-
-
