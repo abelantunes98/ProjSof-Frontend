@@ -7,7 +7,6 @@ import { viewPerfil, viewComentario } from "./view.js";
 async function darLike() {
 
     const url = "https://projsof.herokuapp.com/api/actions/setLike/";
-    //const url = "http://localhost:8080/api/actions/setLike/";
     let subject = sessionStorage.getItem("subject");
     subject = JSON.parse(subject);
     let dados;
@@ -34,7 +33,6 @@ async function darLike() {
 async function darDeslike() {
 
     const url = "https://projsof.herokuapp.com/api/actions/setLike/";
-    //const url = "http://localhost:8080/api/actions/setLike/";
     let subject = sessionStorage.getItem("subject");
     subject = JSON.parse(subject);
     let dados;

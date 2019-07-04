@@ -11,7 +11,6 @@ async function procuraDisciplina(subString){
     let dados;
 
     // Rotas para testar a API
-    //const url = "http://localhost:8080/api/subjects/search/" + subString;
     const url = "https://projsof.herokuapp.com/api/subjects/search/" + subString;
 
     const corpo = null; // Null pois GET não tem body;
@@ -47,7 +46,6 @@ async function procuraDisciplinaById(subjectId){
         if (token != null && token != "") {
             let dados
         
-            //const url = "http://localhost:8080/api/subjects/searchId/" + subjectId; 
             const url = "https://projsof.herokuapp.com/api/subjects/searchId/" + subjectId;
             const method = 'GET';
             const body = null;
@@ -55,7 +53,6 @@ async function procuraDisciplinaById(subjectId){
             let response = await authomatizeRequest(url, method, body);       
             if(response.ok){
                 dados = await response.json();
-                console.log(dados);
                 viewDisciplinaId(dados);
             }else{                         
                 alert("ID inválido da disciplina");
