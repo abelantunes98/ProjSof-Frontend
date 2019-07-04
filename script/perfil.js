@@ -90,9 +90,11 @@ async function deletaComentario(idComentario){
     let response = await authomatizeRequest(url,method,corpo);
 
     if(response.ok){
+        let dados = await response.json();
+        sessionStorage.setItem("subject",JSON.stringify(dados));
         viewPerfil();
     }else{
-        alert("Esse comentario não pode ser apagado por você");
+        alert("Esse comentario não pode ser apagado por você!");
     }
 
 

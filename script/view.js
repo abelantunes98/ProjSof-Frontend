@@ -91,14 +91,17 @@ function viewComentario(){
     let subject = sessionStorage.getItem("subject");
     let comentarios = JSON.parse(subject).comments;
     let html = "";
+    let idsBotoes = new Array();
     for(let i=0; i < comentarios.length; i++){
         let tamanho_resp = comentarios[i].comments_resp.length;
         let id_button = "btn-comentPai"+comentarios[i].id;
+        idsBotoes.push([id_button, comentarios[i].id]);
         html += `
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
                     <div class="comentarioPai">
-                    <p>${comentarios[i].comment_msg}</p>
+                    <h5>${comentarios[i].comment_msg}</h5>
                     <button id="${id_button}" class="material-icons">delete</button>
+                    <h6>${comentarios[i].user_name}</h6>
                     <time>${comentarios[i].data}</time>
                     <button>Responder</button>
                     </div>
@@ -111,10 +114,15 @@ function viewComentario(){
         }
         html += `</div>`
 
-        document.getElementById("btn-comentPai"+comentarios[i].id).onclick = (() => {deletaComentario(comentarios[i].id)});
     }
-
+    
     $divComent.innerHTML = html;
+
+    idsBotoes.forEach(idVez => {
+        document.getElementById(idVez[0]).onclick = (() => {deletaComentario(idVez[1])});    
+    });
+    
+
 }
 
 
