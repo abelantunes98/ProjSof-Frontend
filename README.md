@@ -28,7 +28,7 @@ O UFCG Cursos database é uma aplicação para classificação e reviews de disc
 
 - [x] Caso de uso 5: Apagar comentários de uma disciplina
 
-* texto do caso de uso 5
+* Ao clicar no widget "deletar", o usuário que escreveu aquele comentário é capaz de apagá-lo. A API faz a requisição para o servidor, e ele retorna um Ok caso sucesso, ou 200. Depois desse evento o view é novamente  renderizada.
 
 - [x] Caso de uso 6: Dar/retirar like em uma disciplina
 
