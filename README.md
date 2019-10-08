@@ -1,5 +1,7 @@
 # Projeto-Psoft front-end
 
+## Alunos da Graduação responsáveis: Abel Antunes, Hércules Rodrigues, Paulo Mendes.
+
 ### Front-end da aplicação para o projeto da disciplina Projeto de Software 2019.1 by UFCG
 
 _Breve resumo da aplicação_
